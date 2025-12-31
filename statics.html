@@ -3,22 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statics & Dynamics - Mechanical Mastery</title>
+    <title>Statics & Dynamics Test - Mechanical Mastery</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="concept-page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    <style>
+        .test-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .test-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .test-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .test-progress {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .question-counter {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .question-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .question-category {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .question-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option-item {
+            padding: 1.2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .option-item:hover {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateX(5px);
+        }
+
+        .option-item.selected {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .option-item input[type="radio"] {
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .option-item label {
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .test-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-prev {
+            background: white;
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-next:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            padding: 1.2rem 3rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .results-container {
+            display: none;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            margin-top: 2rem;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .score-display {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+        }
+
+        .score-percentage {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .category-breakdown {
+            margin: 2rem 0;
+        }
+
+        .category-item {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid;
+        }
+
+        .category-item.excellent {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--success-color);
+        }
+
+        .category-item.good {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .category-item.needs-improvement {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
+        }
+
+        .category-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-score {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .study-recommendations {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .study-recommendations h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendation-list li {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: var(--bg-light);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 1rem;
             }
-        };
-    </script>
+
+            .question-card {
+                padding: 1.5rem;
+            }
+
+            .test-navigation {
+                flex-direction: column;
+            }
+
+            .nav-button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -35,299 +354,9 @@
     </header>
 
     <main style="padding: 2rem 0; min-height: calc(100vh - 200px);">
-        <div class="concept-page-container">
-            <div class="concept-header">
-                <h1>⚖️ Statics & Dynamics</h1>
-                <p>Study forces, moments, and motion in mechanical systems</p>
-            </div>
-
-            <div class="concept-tabs">
-                <button class="concept-tab active" onclick="switchTab('equations')">Equation Sheet</button>
-                <button class="concept-tab" onclick="switchTab('test')">Practice Test</button>
-            </div>
-
-            <!-- Equations Tab -->
-            <div id="equations-tab" class="concept-content active">
-                <div class="equation-section">
-                    <h3>Force Analysis</h3>
-                    
-                    <div class="equation-item" id="eq-force-components">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $F_x = F \cos(\theta)$, $F_y = F \sin(\theta)$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">F</span> - Force</strong>
-                                <div class="var-description">Magnitude of the force vector (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">θ</span> - Angle</strong>
-                                <div class="var-description">Angle from horizontal axis (rad, deg)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">F_x</span> - Horizontal Component</strong>
-                                <div class="var-description">Force component in x-direction (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">F_y</span> - Vertical Component</strong>
-                                <div class="var-description">Force component in y-direction (N, kN, lbf)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="equation-item" id="eq-resultant-force">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $F_R = \sqrt{F_x^2 + F_y^2}$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">F_R</span> - Resultant Force</strong>
-                                <div class="var-description">Magnitude of resultant force (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">F_x</span> - Horizontal Component</strong>
-                                <div class="var-description">Sum of forces in x-direction (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">F_y</span> - Vertical Component</strong>
-                                <div class="var-description">Sum of forces in y-direction (N, kN, lbf)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="equation-section">
-                    <h3>Equilibrium</h3>
-                    
-                    <div class="equation-item" id="eq-equilibrium">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $\sum F_x = 0$, $\sum F_y = 0$, $\sum M = 0$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">ΣF_x</span> - Sum of Forces (x)</strong>
-                                <div class="var-description">Sum of all forces in x-direction (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">ΣF_y</span> - Sum of Forces (y)</strong>
-                                <div class="var-description">Sum of all forces in y-direction (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">ΣM</span> - Sum of Moments</strong>
-                                <div class="var-description">Sum of all moments about a point (N·m, lb·ft)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="equation-item" id="eq-tension">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $T = mg$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">T</span> - Tension</strong>
-                                <div class="var-description">Tension force in rope/cable (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">m</span> - Mass</strong>
-                                <div class="var-description">Mass of the object (kg, g, lb)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">g</span> - Gravitational Acceleration</strong>
-                                <div class="var-description">Acceleration due to gravity (m/s², ft/s², g)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="equation-section">
-                    <h3>Moments & Torque</h3>
-                    
-                    <div class="equation-item" id="eq-moment">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $M = F \times d$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">M</span> - Moment</strong>
-                                <div class="var-description">Moment about a point (N·m, lb·ft)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">F</span> - Force</strong>
-                                <div class="var-description">Applied force (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">d</span> - Perpendicular Distance</strong>
-                                <div class="var-description">Distance from force line to pivot (m, cm, ft, in)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="equation-item" id="eq-moment-angle">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $M = Fd \sin(\theta)$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">M</span> - Moment</strong>
-                                <div class="var-description">Moment about a point (N·m, lb·ft)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">F</span> - Force</strong>
-                                <div class="var-description">Applied force (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">d</span> - Distance</strong>
-                                <div class="var-description">Distance from pivot to force application point (m, cm, ft, in)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">θ</span> - Angle</strong>
-                                <div class="var-description">Angle between force and position vector (rad, deg)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="equation-section">
-                    <h3>Newton's Laws & Dynamics</h3>
-                    
-                    <div class="equation-item" id="eq-newton-second">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $F = ma$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">F</span> - Net Force</strong>
-                                <div class="var-description">Sum of all forces acting on object (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">m</span> - Mass</strong>
-                                <div class="var-description">Mass of the object (kg, g, lb)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">a</span> - Acceleration</strong>
-                                <div class="var-description">Acceleration of the object (m/s², ft/s²)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="equation-item" id="eq-incline-acceleration">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $a = g \sin(\theta)$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">a</span> - Acceleration</strong>
-                                <div class="var-description">Acceleration down the incline (m/s², ft/s²)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">g</span> - Gravitational Acceleration</strong>
-                                <div class="var-description">Acceleration due to gravity (m/s², ft/s², g)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">θ</span> - Incline Angle</strong>
-                                <div class="var-description">Angle of the incline (rad, deg)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="equation-item" id="eq-centripetal">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $F_c = \frac{mv^2}{r}$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">F_c</span> - Centripetal Force</strong>
-                                <div class="var-description">Force directed toward center (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">m</span> - Mass</strong>
-                                <div class="var-description">Mass of the object (kg, g, lb)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">v</span> - Velocity</strong>
-                                <div class="var-description">Tangential velocity (m/s, km/h, ft/s, mph)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">r</span> - Radius</strong>
-                                <div class="var-description">Radius of circular path (m, cm, ft, in)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="equation-section">
-                    <h3>Friction</h3>
-                    
-                    <div class="equation-item" id="eq-static-friction">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $f_s \leq \mu_s N$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">f_s</span> - Static Friction Force</strong>
-                                <div class="var-description">Maximum static friction force (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">μ_s</span> - Coefficient of Static Friction</strong>
-                                <div class="var-description">Dimensionless coefficient</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">N</span> - Normal Force</strong>
-                                <div class="var-description">Force perpendicular to surface (N, kN, lbf)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="equation-item" id="eq-kinetic-friction">
-                        <div class="equation-formula">
-                            <div class="equation-math">
-                                $f_k = \mu_k N$
-                            </div>
-                        </div>
-                        <div class="variable-definitions">
-                            <div class="variable-def">
-                                <strong><span class="var-name">f_k</span> - Kinetic Friction Force</strong>
-                                <div class="var-description">Kinetic friction force (N, kN, lbf)</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">μ_k</span> - Coefficient of Kinetic Friction</strong>
-                                <div class="var-description">Dimensionless coefficient</div>
-                            </div>
-                            <div class="variable-def">
-                                <strong><span class="var-name">N</span> - Normal Force</strong>
-                                <div class="var-description">Force perpendicular to surface (N, kN, lbf)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Test Tab -->
-            <div id="test-tab" class="concept-content">
-                <div class="test-section">
-                    <div class="test-header-section">
-                        <h2>⚖️ Statics & Dynamics Assessment</h2>
+        <div class="test-container">
+            <div class="test-header">
+                <h1>⚖️ Statics & Dynamics Assessment</h1>
                 <p>Test your understanding of forces, moments, and motion in mechanical systems</p>
             </div>
 
@@ -353,8 +382,6 @@
             </div>
 
             <div id="results-container" class="results-container"></div>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -364,128 +391,7 @@
         </div>
     </footer>
 
-    <script src="equation-solver.js"></script>
-    <script src="concept-page-template.js"></script>
-    <script src="test-utils.js"></script>
     <script src="statics-test.js"></script>
-    <script>
-        // Tab switching
-        function switchTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.concept-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.concept-tab').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Show selected tab
-            document.getElementById(`${tabName}-tab`).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        // Initialize equation solvers when equations tab is shown
-        document.addEventListener('DOMContentLoaded', () => {
-            // Statics equations data
-            const staticsEquations = {
-                'eq-force-components': {
-                    formula: '$F_x = F \\cos(\\theta)$, $F_y = F \\sin(\\theta)$',
-                    variables: {
-                        'F': { name: 'Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
-                        'θ': { name: 'Angle', unit: 'deg', units: ['deg', 'rad'] },
-                        'F_x': { name: 'Horizontal Component', unit: 'N', units: ['N', 'kN', 'lbf'] },
-                        'F_y': { name: 'Vertical Component', unit: 'N', units: ['N', 'kN', 'lbf'] }
-                    },
-                    rearrangements: {
-                        'F': '$F = \\frac{F_x}{\\cos(\\theta)}$',
-                        'F_x': '$F_x = F \\cos(\\theta)$',
-                        'F_y': '$F_y = F \\sin(\\theta)$',
-                        'θ': '$\\theta = \\arctan\\left(\\frac{F_y}{F_x}\\right)$'
-                    },
-                    solvers: {
-                        'F_x': (vars) => vars.F * Math.cos(vars['θ'] * Math.PI / 180),
-                        'F_y': (vars) => vars.F * Math.sin(vars['θ'] * Math.PI / 180),
-                        'F': (vars) => Math.sqrt(vars.F_x ** 2 + vars.F_y ** 2),
-                        'θ': (vars) => Math.atan2(vars.F_y, vars.F_x) * 180 / Math.PI
-                    }
-                },
-                'eq-newton-second': {
-                    formula: '$F = ma$',
-                    variables: {
-                        'F': { name: 'Net Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
-                        'm': { name: 'Mass', unit: 'kg', units: ['kg', 'g', 'lb'] },
-                        'a': { name: 'Acceleration', unit: 'm/s²', units: ['m/s²', 'ft/s²'] }
-                    },
-                    rearrangements: {
-                        'F': '$F = ma$',
-                        'm': '$m = \\frac{F}{a}$',
-                        'a': '$a = \\frac{F}{m}$'
-                    },
-                    solvers: {
-                        'F': (vars) => vars.m * vars.a,
-                        'm': (vars) => vars.F / vars.a,
-                        'a': (vars) => vars.F / vars.m
-                    }
-                },
-                'eq-moment': {
-                    formula: '$M = F \\times d$',
-                    variables: {
-                        'M': { name: 'Moment', unit: 'N·m', units: ['N·m', 'lb·ft'] },
-                        'F': { name: 'Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
-                        'd': { name: 'Perpendicular Distance', unit: 'm', units: ['m', 'cm', 'ft', 'in'] }
-                    },
-                    rearrangements: {
-                        'M': '$M = Fd$',
-                        'F': '$F = \\frac{M}{d}$',
-                        'd': '$d = \\frac{M}{F}$'
-                    },
-                    solvers: {
-                        'M': (vars) => vars.F * vars.d,
-                        'F': (vars) => vars.M / vars.d,
-                        'd': (vars) => vars.M / vars.F
-                    }
-                },
-                'eq-tension': {
-                    formula: '$T = mg$',
-                    variables: {
-                        'T': { name: 'Tension', unit: 'N', units: ['N', 'kN', 'lbf'] },
-                        'm': { name: 'Mass', unit: 'kg', units: ['kg', 'g', 'lb'] },
-                        'g': { name: 'Gravitational Acceleration', unit: 'm/s²', units: ['m/s²', 'ft/s²', 'g'] }
-                    },
-                    rearrangements: {
-                        'T': '$T = mg$',
-                        'm': '$m = \\frac{T}{g}$',
-                        'g': '$g = \\frac{T}{m}$'
-                    },
-                    solvers: {
-                        'T': (vars) => vars.m * vars.g,
-                        'm': (vars) => vars.T / vars.g,
-                        'g': (vars) => vars.T / vars.m
-                    }
-                },
-                'eq-kinetic-friction': {
-                    formula: '$f_k = \\mu_k N$',
-                    variables: {
-                        'f_k': { name: 'Kinetic Friction Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
-                        'μ_k': { name: 'Coefficient of Kinetic Friction', unit: '', units: [''] },
-                        'N': { name: 'Normal Force', unit: 'N', units: ['N', 'kN', 'lbf'] }
-                    },
-                    rearrangements: {
-                        'f_k': '$f_k = \\mu_k N$',
-                        'μ_k': '$\\mu_k = \\frac{f_k}{N}$',
-                        'N': '$N = \\frac{f_k}{\\mu_k}$'
-                    },
-                    solvers: {
-                        'f_k': (vars) => vars['μ_k'] * vars.N,
-                        'μ_k': (vars) => vars.f_k / vars.N,
-                        'N': (vars) => vars.f_k / vars['μ_k']
-                    }
-                }
-            };
-
-            // Initialize equations using template
-            conceptPageTemplate.initEquations(staticsEquations);
-        });
-    </script>
 </body>
 </html>
+

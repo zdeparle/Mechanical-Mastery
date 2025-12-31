@@ -548,6 +548,7 @@ document.querySelectorAll('.concept-card').forEach(card => {
 function navigateToConcept(concept) {
     const conceptPages = {
         statics: 'statics.html',
+<<<<<<< HEAD
         thermodynamics: 'thermodynamics.html',
         materials: 'materials.html',
         fluids: 'fluids.html',
@@ -587,6 +588,13 @@ function showConceptInfo(concept) {
             formula: 'x(t) = A·sin(ωt + φ), ω = √(k/m)'
         }
 >>>>>>> parent of 929f6ee (3)
+=======
+        thermodynamics: 'index.html#thermodynamics', // Placeholder - will create later
+        materials: 'index.html#materials', // Placeholder - will create later
+        fluids: 'index.html#fluids', // Placeholder - will create later
+        design: 'index.html#design', // Placeholder - will create later
+        vibrations: 'index.html#vibrations' // Placeholder - will create later
+>>>>>>> parent of 25daba3 (4)
     };
     
     const data = info[concept];
