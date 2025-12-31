@@ -536,11 +536,15 @@ function updateBeam() {
     drawBeam();
 }
 
-// Concept Card Interactions
-document.querySelectorAll('.concept-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const concept = this.getAttribute('data-concept');
-        showConceptInfo(concept);
+// Concept Card Interactions - Learn More button handlers
+document.querySelectorAll('.learn-more-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent card click event
+        const card = this.closest('.concept-card');
+        const concept = card.getAttribute('data-concept');
+        if (concept) {
+            navigateToConcept(concept);
+        }
     });
 });
 
