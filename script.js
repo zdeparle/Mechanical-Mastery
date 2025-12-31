@@ -538,26 +538,13 @@ function updateBeam() {
 
 // Concept Card Interactions
 document.querySelectorAll('.concept-card').forEach(card => {
-    card.addEventListener('click', function(e) {
-        // Don't navigate if clicking the button
-        if (e.target.classList.contains('learn-more-btn')) {
-            return;
-        }
+    card.addEventListener('click', function() {
         const concept = this.getAttribute('data-concept');
-        navigateToConcept(concept);
+        showConceptInfo(concept);
     });
-    
-    // Handle button clicks separately
-    const button = card.querySelector('.learn-more-btn');
-    if (button) {
-        button.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const concept = card.getAttribute('data-concept');
-            navigateToConcept(concept);
-        });
-    }
 });
 
+<<<<<<< HEAD
 function navigateToConcept(concept) {
     const conceptPages = {
         statics: 'statics.html',
@@ -566,11 +553,45 @@ function navigateToConcept(concept) {
         fluids: 'fluids.html',
         design: 'design.html',
         vibrations: 'vibrations.html'
+=======
+function showConceptInfo(concept) {
+    const info = {
+        statics: {
+            title: 'Statics & Dynamics',
+            description: 'Statics deals with forces in equilibrium, while dynamics studies motion and the forces that cause it. Key concepts include Newton\'s laws, free body diagrams, and moment calculations.',
+            formula: 'ΣF = 0 (Equilibrium), F = ma (Newton\'s Second Law)'
+        },
+        thermodynamics: {
+            title: 'Thermodynamics',
+            description: 'Thermodynamics studies energy, heat, and work in systems. The four laws govern energy conservation, entropy, and the direction of processes.',
+            formula: 'Q = mcΔT, ΔU = Q - W, η = W/Qh'
+        },
+        materials: {
+            title: 'Materials Science',
+            description: 'Materials science examines how materials respond to forces. Stress is force per area, strain is deformation per original length, and Young\'s modulus relates them.',
+            formula: 'σ = F/A, ε = ΔL/L, E = σ/ε'
+        },
+        fluids: {
+            title: 'Fluid Mechanics',
+            description: 'Fluid mechanics studies liquids and gases in motion. Key principles include continuity, Bernoulli\'s equation, and pressure relationships.',
+            formula: 'Q = Av, P + ½ρv² + ρgh = constant'
+        },
+        design: {
+            title: 'Machine Design',
+            description: 'Machine design involves selecting materials, dimensions, and configurations to meet performance requirements while ensuring safety and reliability.',
+            formula: 'Safety Factor = Ultimate Stress / Working Stress'
+        },
+        vibrations: {
+            title: 'Vibrations',
+            description: 'Vibrations are oscillatory motions. Simple harmonic motion follows sinusoidal patterns, and resonance occurs when forcing frequency matches natural frequency.',
+            formula: 'x(t) = A·sin(ωt + φ), ω = √(k/m)'
+        }
+>>>>>>> parent of 929f6ee (3)
     };
     
-    const page = conceptPages[concept];
-    if (page) {
-        window.location.href = page;
+    const data = info[concept];
+    if (data) {
+        alert(`${data.title}\n\n${data.description}\n\nKey Formula: ${data.formula}`);
     }
 }
 
