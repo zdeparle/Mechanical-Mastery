@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluid Mechanics - Mechanical Mastery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="concept-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span>Mechanical Mastery</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#concepts">Concepts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 2rem 0; min-height: calc(100vh - 200px);">
+        <div class="concept-page-container">
+            <div class="concept-header">
+                <h1>💧 Fluid Mechanics</h1>
+                <p>Learn about pressure, flow, and fluid dynamics</p>
+            </div>
+
+            <div class="concept-tabs">
+                <button class="concept-tab active" onclick="switchTab('equations')">Equation Sheet</button>
+                <button class="concept-tab" onclick="switchTab('test')">Practice Test</button>
+            </div>
+
+            <div id="equations-tab" class="concept-content active">
+                <div class="equation-section">
+                    <h3>Pressure & Hydrostatics</h3>
+                    
+                    <div class="equation-item" id="eq-pressure">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $P = \frac{F}{A}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">P</span> - Pressure</strong>
+                                <div class="var-description">Pressure (Pa, kPa, MPa, psi, atm)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">F</span> - Force</strong>
+                                <div class="var-description">Force normal to surface (N, kN, lbf)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">A</span> - Area</strong>
+                                <div class="var-description">Surface area (m², cm², in²)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-hydrostatic-pressure">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $P = P_0 + \rho gh$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">P</span> - Pressure</strong>
+                                <div class="var-description">Pressure at depth h (Pa, kPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">P₀</span> - Surface Pressure</strong>
+                                <div class="var-description">Pressure at surface (Pa, kPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ρ</span> - Density</strong>
+                                <div class="var-description">Fluid density (kg/m³, g/cm³, lb/ft³)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">g</span> - Gravitational Acceleration</strong>
+                                <div class="var-description">Acceleration due to gravity (m/s², ft/s²)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">h</span> - Depth</strong>
+                                <div class="var-description">Depth below surface (m, cm, ft, in)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Continuity & Flow</h3>
+                    
+                    <div class="equation-item" id="eq-continuity">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $Q = Av = \text{constant}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">Q</span> - Volumetric Flow Rate</strong>
+                                <div class="var-description">Volume flow rate (m³/s, L/s, ft³/s, gpm)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">A</span> - Cross-sectional Area</strong>
+                                <div class="var-description">Pipe cross-sectional area (m², cm², in²)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">v</span> - Velocity</strong>
+                                <div class="var-description">Flow velocity (m/s, cm/s, ft/s, mph)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-bernoulli">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $P + \frac{1}{2}\rho v^2 + \rho gh = \text{constant}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">P</span> - Pressure</strong>
+                                <div class="var-description">Static pressure (Pa, kPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ρ</span> - Density</strong>
+                                <div class="var-description">Fluid density (kg/m³, g/cm³, lb/ft³)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">v</span> - Velocity</strong>
+                                <div class="var-description">Flow velocity (m/s, ft/s)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">g</span> - Gravitational Acceleration</strong>
+                                <div class="var-description">Acceleration due to gravity (m/s², ft/s²)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">h</span> - Height</strong>
+                                <div class="var-description">Elevation above reference (m, ft)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Reynolds Number</h3>
+                    
+                    <div class="equation-item" id="eq-reynolds">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $Re = \frac{\rho vD}{\mu}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">Re</span> - Reynolds Number</strong>
+                                <div class="var-description">Dimensionless flow parameter</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ρ</span> - Density</strong>
+                                <div class="var-description">Fluid density (kg/m³, g/cm³, lb/ft³)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">v</span> - Velocity</strong>
+                                <div class="var-description">Flow velocity (m/s, ft/s)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">D</span> - Characteristic Length</strong>
+                                <div class="var-description">Pipe diameter or characteristic length (m, cm, in, ft)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">μ</span> - Dynamic Viscosity</strong>
+                                <div class="var-description">Dynamic viscosity (Pa·s, cP, lb·s/ft²)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="test-tab" class="concept-content">
+                <div class="test-section">
+                    <div class="test-header-section">
+                        <h2>💧 Fluid Mechanics Assessment</h2>
+                        <p>Test your understanding of pressure, flow, and fluid dynamics</p>
+                    </div>
+                    <div id="test-content">
+                        <div class="test-progress">
+                            <div class="question-counter">
+                                Question <span id="current-question">1</span> of <span id="total-questions">25</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill" style="width: 4%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="questions-container"></div>
+                        <div class="test-navigation">
+                            <button class="nav-button btn-prev" id="prev-btn" onclick="previousQuestion()" disabled>Previous</button>
+                            <button class="nav-button btn-next" id="next-btn" onclick="nextQuestion()">Next</button>
+                            <button class="nav-button btn-submit" id="submit-btn" onclick="submitTest()" style="display: none;">Submit Test</button>
+                        </div>
+                    </div>
+                    <div id="results-container" class="results-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mechanical Mastery. Interactive Engineering Education Platform.</p>
+        </div>
+    </footer>
+
+    <script src="equation-solver.js"></script>
+    <script src="concept-page-template.js"></script>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.concept-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.concept-tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const fluidsEquations = {
+                'eq-pressure': {
+                    formula: '$P = \\frac{F}{A}$',
+                    variables: {
+                        'P': { name: 'Pressure', unit: 'Pa', units: ['Pa', 'kPa', 'MPa', 'psi', 'atm'] },
+                        'F': { name: 'Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
+                        'A': { name: 'Area', unit: 'm²', units: ['m²', 'cm²', 'in²'] }
+                    },
+                    rearrangements: {
+                        'P': '$P = \\frac{F}{A}$',
+                        'F': '$F = PA$',
+                        'A': '$A = \\frac{F}{P}$'
+                    },
+                    solvers: {
+                        'P': (vars) => vars.F / vars.A,
+                        'F': (vars) => vars.P * vars.A,
+                        'A': (vars) => vars.F / vars.P
+                    }
+                },
+                'eq-continuity': {
+                    formula: '$Q = Av$',
+                    variables: {
+                        'Q': { name: 'Flow Rate', unit: 'm³/s', units: ['m³/s', 'L/s', 'ft³/s', 'gpm'] },
+                        'A': { name: 'Area', unit: 'm²', units: ['m²', 'cm²', 'in²'] },
+                        'v': { name: 'Velocity', unit: 'm/s', units: ['m/s', 'cm/s', 'ft/s', 'mph'] }
+                    },
+                    rearrangements: {
+                        'Q': '$Q = Av$',
+                        'A': '$A = \\frac{Q}{v}$',
+                        'v': '$v = \\frac{Q}{A}$'
+                    },
+                    solvers: {
+                        'Q': (vars) => vars.A * vars.v,
+                        'A': (vars) => vars.Q / vars.v,
+                        'v': (vars) => vars.Q / vars.A
+                    }
+                },
+                'eq-hydrostatic-pressure': {
+                    formula: '$P = P_0 + \\rho gh$',
+                    variables: {
+                        'P': { name: 'Pressure', unit: 'Pa', units: ['Pa', 'kPa', 'psi'] },
+                        'P₀': { name: 'Surface Pressure', unit: 'Pa', units: ['Pa', 'kPa', 'psi'] },
+                        'ρ': { name: 'Density', unit: 'kg/m³', units: ['kg/m³', 'g/cm³', 'lb/ft³'] },
+                        'g': { name: 'Gravitational Acceleration', unit: 'm/s²', units: ['m/s²', 'ft/s²'] },
+                        'h': { name: 'Depth', unit: 'm', units: ['m', 'cm', 'ft', 'in'] }
+                    },
+                    rearrangements: {
+                        'P': '$P = P_0 + \\rho gh$',
+                        'P₀': '$P_0 = P - \\rho gh$',
+                        'h': '$h = \\frac{P - P_0}{\\rho g}$'
+                    },
+                    solvers: {
+                        'P': (vars) => vars['P₀'] + vars['ρ'] * vars.g * vars.h,
+                        'P₀': (vars) => vars.P - vars['ρ'] * vars.g * vars.h,
+                        'h': (vars) => (vars.P - vars['P₀']) / (vars['ρ'] * vars.g)
+                    }
+                }
+            };
+
+            conceptPageTemplate.initEquations(fluidsEquations);
+        });
+    </script>
+    <script src="test-utils.js"></script>
+    <script src="fluids-test.js"></script>
+</body>
+</html>
+

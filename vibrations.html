@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrations - Mechanical Mastery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="concept-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span>Mechanical Mastery</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#concepts">Concepts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 2rem 0; min-height: calc(100vh - 200px);">
+        <div class="concept-page-container">
+            <div class="concept-header">
+                <h1>📳 Vibrations</h1>
+                <p>Analyze oscillatory motion and resonance in systems</p>
+            </div>
+
+            <div class="concept-tabs">
+                <button class="concept-tab active" onclick="switchTab('equations')">Equation Sheet</button>
+                <button class="concept-tab" onclick="switchTab('test')">Practice Test</button>
+            </div>
+
+            <div id="equations-tab" class="concept-content active">
+                <div class="equation-section">
+                    <h3>Simple Harmonic Motion</h3>
+                    
+                    <div class="equation-item" id="eq-shm-displacement">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $x(t) = A\sin(\omega t + \phi)$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">x</span> - Displacement</strong>
+                                <div class="var-description">Position at time t (m, cm, in)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">A</span> - Amplitude</strong>
+                                <div class="var-description">Maximum displacement (m, cm, in)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ω</span> - Angular Frequency</strong>
+                                <div class="var-description">Angular frequency (rad/s)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">t</span> - Time</strong>
+                                <div class="var-description">Time (s, ms)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">φ</span> - Phase Angle</strong>
+                                <div class="var-description">Initial phase (rad, deg)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-natural-frequency">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $\omega_n = \sqrt{\frac{k}{m}}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">ω_n</span> - Natural Frequency</strong>
+                                <div class="var-description">Undamped natural frequency (rad/s, Hz)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">k</span> - Spring Constant</strong>
+                                <div class="var-description">Spring stiffness (N/m, kN/m, lb/in)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">m</span> - Mass</strong>
+                                <div class="var-description">Mass of oscillating system (kg, g, lb)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Damping</h3>
+                    
+                    <div class="equation-item" id="eq-damping-ratio">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $\zeta = \frac{c}{2\sqrt{km}}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">ζ</span> - Damping Ratio</strong>
+                                <div class="var-description">Dimensionless damping parameter</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">c</span> - Damping Coefficient</strong>
+                                <div class="var-description">Viscous damping coefficient (N·s/m, lb·s/ft)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">k</span> - Spring Constant</strong>
+                                <div class="var-description">Spring stiffness (N/m, lb/in)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">m</span> - Mass</strong>
+                                <div class="var-description">Mass (kg, lb)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Resonance</h3>
+                    
+                    <div class="equation-item" id="eq-frequency-ratio">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $r = \frac{\omega}{\omega_n}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">r</span> - Frequency Ratio</strong>
+                                <div class="var-description">Ratio of forcing to natural frequency (dimensionless)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ω</span> - Forcing Frequency</strong>
+                                <div class="var-description">Frequency of external force (rad/s, Hz)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ω_n</span> - Natural Frequency</strong>
+                                <div class="var-description">Natural frequency of system (rad/s, Hz)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="test-tab" class="concept-content">
+                <div class="test-section">
+                    <div class="test-header-section">
+                        <h2>📳 Vibrations Assessment</h2>
+                        <p>Test your understanding of oscillatory motion and resonance</p>
+                    </div>
+                    <div id="test-content">
+                        <div class="test-progress">
+                            <div class="question-counter">
+                                Question <span id="current-question">1</span> of <span id="total-questions">25</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill" style="width: 4%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="questions-container"></div>
+                        <div class="test-navigation">
+                            <button class="nav-button btn-prev" id="prev-btn" onclick="previousQuestion()" disabled>Previous</button>
+                            <button class="nav-button btn-next" id="next-btn" onclick="nextQuestion()">Next</button>
+                            <button class="nav-button btn-submit" id="submit-btn" onclick="submitTest()" style="display: none;">Submit Test</button>
+                        </div>
+                    </div>
+                    <div id="results-container" class="results-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mechanical Mastery. Interactive Engineering Education Platform.</p>
+        </div>
+    </footer>
+
+    <script src="equation-solver.js"></script>
+    <script src="concept-page-template.js"></script>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.concept-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.concept-tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const vibrationsEquations = {
+                'eq-natural-frequency': {
+                    formula: '$\\omega_n = \\sqrt{\\frac{k}{m}}$',
+                    variables: {
+                        'ω_n': { name: 'Natural Frequency', unit: 'rad/s', units: ['rad/s', 'Hz'] },
+                        'k': { name: 'Spring Constant', unit: 'N/m', units: ['N/m', 'kN/m', 'lb/in'] },
+                        'm': { name: 'Mass', unit: 'kg', units: ['kg', 'g', 'lb'] }
+                    },
+                    rearrangements: {
+                        'ω_n': '$\\omega_n = \\sqrt{\\frac{k}{m}}$',
+                        'k': '$k = m\\omega_n^2$',
+                        'm': '$m = \\frac{k}{\\omega_n^2}$'
+                    },
+                    solvers: {
+                        'ω_n': (vars) => Math.sqrt(vars.k / vars.m),
+                        'k': (vars) => vars.m * Math.pow(vars['ω_n'], 2),
+                        'm': (vars) => vars.k / Math.pow(vars['ω_n'], 2)
+                    }
+                },
+                'eq-damping-ratio': {
+                    formula: '$\\zeta = \\frac{c}{2\\sqrt{km}}$',
+                    variables: {
+                        'ζ': { name: 'Damping Ratio', unit: '', units: [''] },
+                        'c': { name: 'Damping Coefficient', unit: 'N·s/m', units: ['N·s/m', 'lb·s/ft'] },
+                        'k': { name: 'Spring Constant', unit: 'N/m', units: ['N/m', 'lb/in'] },
+                        'm': { name: 'Mass', unit: 'kg', units: ['kg', 'lb'] }
+                    },
+                    rearrangements: {
+                        'ζ': '$\\zeta = \\frac{c}{2\\sqrt{km}}$',
+                        'c': '$c = 2\\zeta\\sqrt{km}$',
+                        'k': '$k = \\frac{c^2}{4\\zeta^2 m}$',
+                        'm': '$m = \\frac{c^2}{4\\zeta^2 k}$'
+                    },
+                    solvers: {
+                        'ζ': (vars) => vars.c / (2 * Math.sqrt(vars.k * vars.m)),
+                        'c': (vars) => 2 * vars['ζ'] * Math.sqrt(vars.k * vars.m),
+                        'k': (vars) => Math.pow(vars.c, 2) / (4 * Math.pow(vars['ζ'], 2) * vars.m),
+                        'm': (vars) => Math.pow(vars.c, 2) / (4 * Math.pow(vars['ζ'], 2) * vars.k)
+                    }
+                },
+                'eq-frequency-ratio': {
+                    formula: '$r = \\frac{\\omega}{\\omega_n}$',
+                    variables: {
+                        'r': { name: 'Frequency Ratio', unit: '', units: [''] },
+                        'ω': { name: 'Forcing Frequency', unit: 'rad/s', units: ['rad/s', 'Hz'] },
+                        'ω_n': { name: 'Natural Frequency', unit: 'rad/s', units: ['rad/s', 'Hz'] }
+                    },
+                    rearrangements: {
+                        'r': '$r = \\frac{\\omega}{\\omega_n}$',
+                        'ω': '$\\omega = r\\omega_n$',
+                        'ω_n': '$\\omega_n = \\frac{\\omega}{r}$'
+                    },
+                    solvers: {
+                        'r': (vars) => vars['ω'] / vars['ω_n'],
+                        'ω': (vars) => vars.r * vars['ω_n'],
+                        'ω_n': (vars) => vars['ω'] / vars.r
+                    }
+                }
+            };
+
+            conceptPageTemplate.initEquations(vibrationsEquations);
+        });
+    </script>
+    <script src="test-utils.js"></script>
+    <script src="vibrations-test.js"></script>
+</body>
+</html>
+

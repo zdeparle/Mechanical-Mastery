@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materials Science - Mechanical Mastery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="concept-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span>Mechanical Mastery</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#concepts">Concepts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 2rem 0; min-height: calc(100vh - 200px);">
+        <div class="concept-page-container">
+            <div class="concept-header">
+                <h1>🔩 Materials Science</h1>
+                <p>Explore stress, strain, and material properties</p>
+            </div>
+
+            <div class="concept-tabs">
+                <button class="concept-tab active" onclick="switchTab('equations')">Equation Sheet</button>
+                <button class="concept-tab" onclick="switchTab('test')">Practice Test</button>
+            </div>
+
+            <div id="equations-tab" class="concept-content active">
+                <div class="equation-section">
+                    <h3>Stress & Strain</h3>
+                    
+                    <div class="equation-item" id="eq-stress">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $\sigma = \frac{F}{A}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">σ</span> - Stress</strong>
+                                <div class="var-description">Normal stress (Pa, kPa, MPa, GPa, psi, ksi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">F</span> - Force</strong>
+                                <div class="var-description">Applied force (N, kN, lbf)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">A</span> - Cross-sectional Area</strong>
+                                <div class="var-description">Area perpendicular to force (m², cm², mm², in²)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-strain">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $\epsilon = \frac{\Delta L}{L_0}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">ε</span> - Strain</strong>
+                                <div class="var-description">Normal strain (dimensionless)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ΔL</span> - Change in Length</strong>
+                                <div class="var-description">Change in length (m, cm, mm, in, ft)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">L₀</span> - Original Length</strong>
+                                <div class="var-description">Original length (m, cm, mm, in, ft)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-youngs-modulus">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $E = \frac{\sigma}{\epsilon}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">E</span> - Young's Modulus</strong>
+                                <div class="var-description">Elastic modulus (Pa, GPa, psi, ksi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">σ</span> - Stress</strong>
+                                <div class="var-description">Normal stress (Pa, GPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ε</span> - Strain</strong>
+                                <div class="var-description">Normal strain (dimensionless)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Shear Stress & Strain</h3>
+                    
+                    <div class="equation-item" id="eq-shear-stress">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $\tau = \frac{V}{A}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">τ</span> - Shear Stress</strong>
+                                <div class="var-description">Shear stress (Pa, MPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">V</span> - Shear Force</strong>
+                                <div class="var-description">Applied shear force (N, kN, lbf)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">A</span> - Area</strong>
+                                <div class="var-description">Area parallel to force (m², cm², in²)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-shear-modulus">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $G = \frac{\tau}{\gamma}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">G</span> - Shear Modulus</strong>
+                                <div class="var-description">Modulus of rigidity (Pa, GPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">τ</span> - Shear Stress</strong>
+                                <div class="var-description">Shear stress (Pa, GPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">γ</span> - Shear Strain</strong>
+                                <div class="var-description">Shear strain (dimensionless, rad)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Poisson's Ratio</h3>
+                    
+                    <div class="equation-item" id="eq-poissons-ratio">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $\nu = -\frac{\epsilon_{lateral}}{\epsilon_{axial}}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">ν</span> - Poisson's Ratio</strong>
+                                <div class="var-description">Ratio of lateral to axial strain (dimensionless)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ε_lateral</span> - Lateral Strain</strong>
+                                <div class="var-description">Strain perpendicular to load (dimensionless)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ε_axial</span> - Axial Strain</strong>
+                                <div class="var-description">Strain parallel to load (dimensionless)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="test-tab" class="concept-content">
+                <div class="test-section">
+                    <div class="test-header-section">
+                        <h2>🔩 Materials Science Assessment</h2>
+                        <p>Test your understanding of stress, strain, and material properties</p>
+                    </div>
+                    <div id="test-content">
+                        <div class="test-progress">
+                            <div class="question-counter">
+                                Question <span id="current-question">1</span> of <span id="total-questions">25</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill" style="width: 4%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="questions-container"></div>
+                        <div class="test-navigation">
+                            <button class="nav-button btn-prev" id="prev-btn" onclick="previousQuestion()" disabled>Previous</button>
+                            <button class="nav-button btn-next" id="next-btn" onclick="nextQuestion()">Next</button>
+                            <button class="nav-button btn-submit" id="submit-btn" onclick="submitTest()" style="display: none;">Submit Test</button>
+                        </div>
+                    </div>
+                    <div id="results-container" class="results-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mechanical Mastery. Interactive Engineering Education Platform.</p>
+        </div>
+    </footer>
+
+    <script src="equation-solver.js"></script>
+    <script src="concept-page-template.js"></script>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.concept-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.concept-tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const materialsEquations = {
+                'eq-stress': {
+                    formula: '$\\sigma = \\frac{F}{A}$',
+                    variables: {
+                        'σ': { name: 'Stress', unit: 'Pa', units: ['Pa', 'kPa', 'MPa', 'GPa', 'psi', 'ksi'] },
+                        'F': { name: 'Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
+                        'A': { name: 'Area', unit: 'm²', units: ['m²', 'cm²', 'mm²', 'in²'] }
+                    },
+                    rearrangements: {
+                        'σ': '$\\sigma = \\frac{F}{A}$',
+                        'F': '$F = \\sigma A$',
+                        'A': '$A = \\frac{F}{\\sigma}$'
+                    },
+                    solvers: {
+                        'σ': (vars) => vars.F / vars.A,
+                        'F': (vars) => vars['σ'] * vars.A,
+                        'A': (vars) => vars.F / vars['σ']
+                    }
+                },
+                'eq-strain': {
+                    formula: '$\\epsilon = \\frac{\\Delta L}{L_0}$',
+                    variables: {
+                        'ε': { name: 'Strain', unit: '', units: [''] },
+                        'ΔL': { name: 'Change in Length', unit: 'm', units: ['m', 'cm', 'mm', 'in', 'ft'] },
+                        'L₀': { name: 'Original Length', unit: 'm', units: ['m', 'cm', 'mm', 'in', 'ft'] }
+                    },
+                    rearrangements: {
+                        'ε': '$\\epsilon = \\frac{\\Delta L}{L_0}$',
+                        'ΔL': '$\\Delta L = \\epsilon L_0$',
+                        'L₀': '$L_0 = \\frac{\\Delta L}{\\epsilon}$'
+                    },
+                    solvers: {
+                        'ε': (vars) => vars['ΔL'] / vars['L₀'],
+                        'ΔL': (vars) => vars['ε'] * vars['L₀'],
+                        'L₀': (vars) => vars['ΔL'] / vars['ε']
+                    }
+                },
+                'eq-youngs-modulus': {
+                    formula: '$E = \\frac{\\sigma}{\\epsilon}$',
+                    variables: {
+                        'E': { name: "Young's Modulus", unit: 'Pa', units: ['Pa', 'GPa', 'psi', 'ksi'] },
+                        'σ': { name: 'Stress', unit: 'Pa', units: ['Pa', 'GPa', 'psi'] },
+                        'ε': { name: 'Strain', unit: '', units: [''] }
+                    },
+                    rearrangements: {
+                        'E': '$E = \\frac{\\sigma}{\\epsilon}$',
+                        'σ': '$\\sigma = E\\epsilon$',
+                        'ε': '$\\epsilon = \\frac{\\sigma}{E}$'
+                    },
+                    solvers: {
+                        'E': (vars) => vars['σ'] / vars['ε'],
+                        'σ': (vars) => vars.E * vars['ε'],
+                        'ε': (vars) => vars['σ'] / vars.E
+                    }
+                },
+                'eq-shear-stress': {
+                    formula: '$\\tau = \\frac{V}{A}$',
+                    variables: {
+                        'τ': { name: 'Shear Stress', unit: 'Pa', units: ['Pa', 'MPa', 'psi'] },
+                        'V': { name: 'Shear Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
+                        'A': { name: 'Area', unit: 'm²', units: ['m²', 'cm²', 'in²'] }
+                    },
+                    rearrangements: {
+                        'τ': '$\\tau = \\frac{V}{A}$',
+                        'V': '$V = \\tau A$',
+                        'A': '$A = \\frac{V}{\\tau}$'
+                    },
+                    solvers: {
+                        'τ': (vars) => vars.V / vars.A,
+                        'V': (vars) => vars['τ'] * vars.A,
+                        'A': (vars) => vars.V / vars['τ']
+                    }
+                }
+            };
+
+            conceptPageTemplate.initEquations(materialsEquations);
+        });
+    </script>
+    <script src="test-utils.js"></script>
+    <script src="materials-test.js"></script>
+</body>
+</html>
+

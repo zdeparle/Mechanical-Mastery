@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Design - Mechanical Mastery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="concept-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span>Mechanical Mastery</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#concepts">Concepts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 2rem 0; min-height: calc(100vh - 200px);">
+        <div class="concept-page-container">
+            <div class="concept-header">
+                <h1>📐 Machine Design</h1>
+                <p>Design principles for mechanical components and systems</p>
+            </div>
+
+            <div class="concept-tabs">
+                <button class="concept-tab active" onclick="switchTab('equations')">Equation Sheet</button>
+                <button class="concept-tab" onclick="switchTab('test')">Practice Test</button>
+            </div>
+
+            <div id="equations-tab" class="concept-content active">
+                <div class="equation-section">
+                    <h3>Factor of Safety</h3>
+                    
+                    <div class="equation-item" id="eq-factor-of-safety">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $n = \frac{\sigma_{allowable}}{\sigma_{actual}} = \frac{F_{yield}}{F_{applied}}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">n</span> - Factor of Safety</strong>
+                                <div class="var-description">Safety factor (dimensionless, typically 1.5-4)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">σ_allowable</span> - Allowable Stress</strong>
+                                <div class="var-description">Maximum allowed stress (Pa, MPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">σ_actual</span> - Actual Stress</strong>
+                                <div class="var-description">Calculated stress in component (Pa, MPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">F_yield</span> - Yield Force</strong>
+                                <div class="var-description">Force at yield point (N, kN, lbf)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">F_applied</span> - Applied Force</strong>
+                                <div class="var-description">Actual applied force (N, kN, lbf)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Beam Bending</h3>
+                    
+                    <div class="equation-item" id="eq-bending-stress">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $\sigma = \frac{Mc}{I}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">σ</span> - Bending Stress</strong>
+                                <div class="var-description">Maximum bending stress (Pa, MPa, psi)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">M</span> - Bending Moment</strong>
+                                <div class="var-description">Bending moment (N·m, lb·ft)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">c</span> - Distance to Neutral Axis</strong>
+                                <div class="var-description">Distance from neutral axis to outer fiber (m, cm, in)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">I</span> - Moment of Inertia</strong>
+                                <div class="var-description">Area moment of inertia (m⁴, cm⁴, in⁴)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-section-modulus">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $S = \frac{I}{c}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">S</span> - Section Modulus</strong>
+                                <div class="var-description">Section modulus (m³, cm³, in³)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">I</span> - Moment of Inertia</strong>
+                                <div class="var-description">Area moment of inertia (m⁴, cm⁴, in⁴)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">c</span> - Distance to Neutral Axis</strong>
+                                <div class="var-description">Distance from neutral axis (m, cm, in)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Power Transmission</h3>
+                    
+                    <div class="equation-item" id="eq-power-torque">
+                        <div class="equation-formula">
+                            <div class="equation-math">
+                                $P = T\omega = \frac{2\pi NT}{60}$
+                            </div>
+                        </div>
+                        <div class="variable-definitions">
+                            <div class="variable-def">
+                                <strong><span class="var-name">P</span> - Power</strong>
+                                <div class="var-description">Power transmitted (W, kW, hp)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">T</span> - Torque</strong>
+                                <div class="var-description">Torque (N·m, lb·ft)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">ω</span> - Angular Velocity</strong>
+                                <div class="var-description">Angular velocity (rad/s, rpm)</div>
+                            </div>
+                            <div class="variable-def">
+                                <strong><span class="var-name">N</span> - Rotational Speed</strong>
+                                <div class="var-description">Rotational speed (rpm)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="test-tab" class="concept-content">
+                <div class="test-section">
+                    <div class="test-header-section">
+                        <h2>📐 Machine Design Assessment</h2>
+                        <p>Test your understanding of design principles and component analysis</p>
+                    </div>
+                    <div id="test-content">
+                        <div class="test-progress">
+                            <div class="question-counter">
+                                Question <span id="current-question">1</span> of <span id="total-questions">25</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill" style="width: 4%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="questions-container"></div>
+                        <div class="test-navigation">
+                            <button class="nav-button btn-prev" id="prev-btn" onclick="previousQuestion()" disabled>Previous</button>
+                            <button class="nav-button btn-next" id="next-btn" onclick="nextQuestion()">Next</button>
+                            <button class="nav-button btn-submit" id="submit-btn" onclick="submitTest()" style="display: none;">Submit Test</button>
+                        </div>
+                    </div>
+                    <div id="results-container" class="results-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mechanical Mastery. Interactive Engineering Education Platform.</p>
+        </div>
+    </footer>
+
+    <script src="equation-solver.js"></script>
+    <script src="concept-page-template.js"></script>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.concept-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.concept-tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const designEquations = {
+                'eq-bending-stress': {
+                    formula: '$\\sigma = \\frac{Mc}{I}$',
+                    variables: {
+                        'σ': { name: 'Bending Stress', unit: 'Pa', units: ['Pa', 'MPa', 'psi'] },
+                        'M': { name: 'Bending Moment', unit: 'N·m', units: ['N·m', 'lb·ft'] },
+                        'c': { name: 'Distance to Neutral Axis', unit: 'm', units: ['m', 'cm', 'in'] },
+                        'I': { name: 'Moment of Inertia', unit: 'm⁴', units: ['m⁴', 'cm⁴', 'in⁴'] }
+                    },
+                    rearrangements: {
+                        'σ': '$\\sigma = \\frac{Mc}{I}$',
+                        'M': '$M = \\frac{\\sigma I}{c}$',
+                        'c': '$c = \\frac{\\sigma I}{M}$',
+                        'I': '$I = \\frac{Mc}{\\sigma}$'
+                    },
+                    solvers: {
+                        'σ': (vars) => (vars.M * vars.c) / vars.I,
+                        'M': (vars) => (vars['σ'] * vars.I) / vars.c,
+                        'c': (vars) => (vars['σ'] * vars.I) / vars.M,
+                        'I': (vars) => (vars.M * vars.c) / vars['σ']
+                    }
+                },
+                'eq-section-modulus': {
+                    formula: '$S = \\frac{I}{c}$',
+                    variables: {
+                        'S': { name: 'Section Modulus', unit: 'm³', units: ['m³', 'cm³', 'in³'] },
+                        'I': { name: 'Moment of Inertia', unit: 'm⁴', units: ['m⁴', 'cm⁴', 'in⁴'] },
+                        'c': { name: 'Distance to Neutral Axis', unit: 'm', units: ['m', 'cm', 'in'] }
+                    },
+                    rearrangements: {
+                        'S': '$S = \\frac{I}{c}$',
+                        'I': '$I = Sc$',
+                        'c': '$c = \\frac{I}{S}$'
+                    },
+                    solvers: {
+                        'S': (vars) => vars.I / vars.c,
+                        'I': (vars) => vars.S * vars.c,
+                        'c': (vars) => vars.I / vars.S
+                    }
+                },
+                'eq-power-torque': {
+                    formula: '$P = T\\omega$',
+                    variables: {
+                        'P': { name: 'Power', unit: 'W', units: ['W', 'kW', 'hp'] },
+                        'T': { name: 'Torque', unit: 'N·m', units: ['N·m', 'lb·ft'] },
+                        'ω': { name: 'Angular Velocity', unit: 'rad/s', units: ['rad/s', 'rpm'] }
+                    },
+                    rearrangements: {
+                        'P': '$P = T\\omega$',
+                        'T': '$T = \\frac{P}{\\omega}$',
+                        'ω': '$\\omega = \\frac{P}{T}$'
+                    },
+                    solvers: {
+                        'P': (vars) => vars.T * vars['ω'],
+                        'T': (vars) => vars.P / vars['ω'],
+                        'ω': (vars) => vars.P / vars.T
+                    }
+                }
+            };
+
+            conceptPageTemplate.initEquations(designEquations);
+        });
+    </script>
+    <script src="test-utils.js"></script>
+    <script src="design-test.js"></script>
+</body>
+</html>
+

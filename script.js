@@ -561,11 +561,11 @@ document.querySelectorAll('.concept-card').forEach(card => {
 function navigateToConcept(concept) {
     const conceptPages = {
         statics: 'statics.html',
-        thermodynamics: 'index.html#thermodynamics', // Placeholder - will create later
-        materials: 'index.html#materials', // Placeholder - will create later
-        fluids: 'index.html#fluids', // Placeholder - will create later
-        design: 'index.html#design', // Placeholder - will create later
-        vibrations: 'index.html#vibrations' // Placeholder - will create later
+        thermodynamics: 'thermodynamics.html',
+        materials: 'materials.html',
+        fluids: 'fluids.html',
+        design: 'design.html',
+        vibrations: 'vibrations.html'
     };
     
     const page = conceptPages[concept];
