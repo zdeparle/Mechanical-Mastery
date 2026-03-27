@@ -536,6 +536,126 @@ function updateBeam() {
     drawBeam();
 }
 
+// Unit Converter
+const converterData = {
+    length: {
+        units: ['mm', 'cm', 'm', 'km', 'in', 'ft', 'yd', 'mi'],
+        toBase: { mm: 0.001, cm: 0.01, m: 1, km: 1000, in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.344 },
+        base: 'm'
+    },
+    mass: {
+        units: ['g', 'kg', 'lb', 'oz', 'slug', 't'],
+        toBase: { g: 0.001, kg: 1, lb: 0.453592, oz: 0.0283495, slug: 14.5939, t: 1000 },
+        base: 'kg'
+    },
+    force: {
+        units: ['N', 'kN', 'MN', 'lbf', 'kip', 'dyn'],
+        toBase: { N: 1, kN: 1000, MN: 1e6, lbf: 4.44822, kip: 4448.22, dyn: 1e-5 },
+        base: 'N'
+    },
+    pressure: {
+        units: ['Pa', 'kPa', 'MPa', 'GPa', 'psi', 'ksi', 'bar', 'atm', 'mmHg'],
+        toBase: { Pa: 1, kPa: 1000, MPa: 1e6, GPa: 1e9, psi: 6894.76, ksi: 6894760, bar: 1e5, atm: 101325, mmHg: 133.322 },
+        base: 'Pa'
+    },
+    temperature: {
+        units: ['°C', '°F', 'K', '°R'],
+        special: true
+    },
+    energy: {
+        units: ['J', 'kJ', 'MJ', 'cal', 'kcal', 'BTU', 'kWh', 'ft·lbf'],
+        toBase: { J: 1, kJ: 1000, MJ: 1e6, cal: 4.184, kcal: 4184, BTU: 1055.06, kWh: 3.6e6, 'ft·lbf': 1.35582 },
+        base: 'J'
+    },
+    power: {
+        units: ['W', 'kW', 'MW', 'hp', 'BTU/hr', 'ft·lbf/s'],
+        toBase: { W: 1, kW: 1000, MW: 1e6, hp: 745.7, 'BTU/hr': 0.293071, 'ft·lbf/s': 1.35582 },
+        base: 'W'
+    },
+    torque: {
+        units: ['N·m', 'kN·m', 'N·cm', 'lbf·in', 'ft·lbf', 'kgf·m'],
+        toBase: { 'N·m': 1, 'kN·m': 1000, 'N·cm': 0.01, 'lbf·in': 0.112985, 'ft·lbf': 1.35582, 'kgf·m': 9.80665 },
+        base: 'N·m'
+    }
+};
+
+function updateConverterUnits() {
+    const category = document.getElementById('converter-category').value;
+    const fromSelect = document.getElementById('converter-from');
+    const toSelect = document.getElementById('converter-to');
+    const data = converterData[category];
+
+    fromSelect.innerHTML = '';
+    toSelect.innerHTML = '';
+    data.units.forEach((unit, i) => {
+        fromSelect.innerHTML += `<option value="${unit}">${unit}</option>`;
+        toSelect.innerHTML += `<option value="${unit}" ${i === 1 ? 'selected' : ''}>${unit}</option>`;
+    });
+
+    document.getElementById('converter-result').textContent = '-';
+    document.getElementById('converter-formula').textContent = '-';
+    convertUnits();
+}
+
+function convertTemperature(value, from, to) {
+    // Convert to Celsius first
+    let celsius;
+    switch (from) {
+        case '°C': celsius = value; break;
+        case '°F': celsius = (value - 32) * 5 / 9; break;
+        case 'K':  celsius = value - 273.15; break;
+        case '°R': celsius = (value - 491.67) * 5 / 9; break;
+    }
+    // Convert from Celsius to target
+    switch (to) {
+        case '°C': return celsius;
+        case '°F': return celsius * 9 / 5 + 32;
+        case 'K':  return celsius + 273.15;
+        case '°R': return (celsius + 273.15) * 9 / 5;
+    }
+}
+
+function convertUnits() {
+    const value = parseFloat(document.getElementById('converter-value').value);
+    const category = document.getElementById('converter-category').value;
+    const from = document.getElementById('converter-from').value;
+    const to = document.getElementById('converter-to').value;
+    const resultEl = document.getElementById('converter-result');
+    const formulaEl = document.getElementById('converter-formula');
+
+    if (isNaN(value)) {
+        resultEl.textContent = '-';
+        formulaEl.textContent = '-';
+        return;
+    }
+
+    const data = converterData[category];
+    let result;
+
+    if (data.special) {
+        result = convertTemperature(value, from, to);
+    } else {
+        const inBase = value * data.toBase[from];
+        result = inBase / data.toBase[to];
+    }
+
+    const formatted = Math.abs(result) < 0.001 || Math.abs(result) >= 1e6
+        ? result.toExponential(4)
+        : parseFloat(result.toPrecision(6)).toString();
+
+    resultEl.textContent = `${formatted} ${to}`;
+    formulaEl.textContent = `${value} ${from} = ${formatted} ${to}`;
+}
+
+function swapConverterUnits() {
+    const fromSelect = document.getElementById('converter-from');
+    const toSelect = document.getElementById('converter-to');
+    const tmp = fromSelect.value;
+    fromSelect.value = toSelect.value;
+    toSelect.value = tmp;
+    convertUnits();
+}
+
 // Concept Card Interactions - Learn More button handlers
 document.querySelectorAll('.learn-more-btn').forEach(button => {
     button.addEventListener('click', function(e) {
@@ -587,6 +707,9 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
     
+    // Initialize unit converter
+    updateConverterUnits();
+
     // Initialize simulations
     initVectorSimulation();
     initSHMSimulation();
