@@ -3,37 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mechanical Mastery - Interactive Engineering Learning</title>
+    <title>Mechanical Mastery — Interactive Mechanical Engineering Learning</title>
+    <meta name="description" content="Learn mechanical engineering through interactive calculators, simulations, and equation sheets. Statics, thermodynamics, materials, fluids, and more.">
+    <meta name="keywords" content="mechanical engineering, statics, dynamics, thermodynamics, materials science, fluid mechanics, calculators, simulations, learning">
+    <meta name="author" content="Mechanical Mastery">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="color-scheme" content="light dark">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mechanical Mastery — Interactive Engineering Learning">
+    <meta property="og:description" content="Interactive calculators, simulations, and equation sheets for mechanical engineering.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mechanical Mastery">
+    <meta name="twitter:description" content="Interactive mechanical engineering learning platform.">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        // Apply theme before paint to avoid flash
+        (function() {
+            const saved = localStorage.getItem('mm-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header>
-        <nav>
-            <div class="logo">
-                <span class="logo-icon">⚙️</span>
+        <nav aria-label="Primary">
+            <a href="#home" class="logo" aria-label="Mechanical Mastery home">
+                <span class="logo-icon" aria-hidden="true">⚙️</span>
                 <span>Mechanical Mastery</span>
-            </div>
-            <ul class="nav-links">
+            </a>
+            <ul class="nav-links" id="primary-nav">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#concepts">Concepts</a></li>
                 <li><a href="#calculators">Calculators</a></li>
                 <li><a href="#simulations">Simulations</a></li>
             </ul>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <span class="theme-icon-light" aria-hidden="true">☀️</span>
+                    <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
+    <main id="main-content">
+        <section id="home" class="hero" aria-labelledby="hero-title">
             <div class="hero-content">
-                <div class="hero-animation">
+                <div class="hero-animation" aria-hidden="true">
                     <svg class="gear gear-1" viewBox="0 0 100 100">
                         <path d="M50,10 L60,20 L80,20 L80,40 L60,40 L50,50 L40,40 L20,40 L20,20 L40,20 Z" fill="rgba(255,255,255,0.3)"/>
                         <circle cx="50" cy="50" r="15" fill="rgba(255,255,255,0.2)"/>
@@ -43,138 +75,140 @@
                         <circle cx="50" cy="50" r="15" fill="rgba(255,255,255,0.2)"/>
                     </svg>
                 </div>
-                <h1>Master Mechanical Engineering</h1>
+                <h1 id="hero-title">Master Mechanical Engineering</h1>
                 <p>Explore, learn, and apply fundamental engineering concepts through interactive tools and visualizations</p>
-                <button class="cta-button" onclick="document.querySelector('#concepts').scrollIntoView({behavior: 'smooth'})">
+                <button class="cta-button" data-scroll-to="#concepts">
                     Start Learning
                 </button>
             </div>
         </section>
 
-        <section id="concepts" class="concepts">
+        <section id="concepts" class="concepts" aria-labelledby="concepts-title">
             <div class="container">
-                <h2>Core Concepts</h2>
+                <h2 id="concepts-title">Core Concepts</h2>
                 <p class="section-subtitle">Explore fundamental mechanical engineering principles</p>
                 <div class="concepts-grid">
-                    <div class="concept-card" data-concept="statics">
-                        <div class="concept-icon">⚖️</div>
-                        <h3>Statics & Dynamics</h3>
+                    <article class="concept-card" data-concept="statics" data-page="statics.html">
+                        <div class="concept-icon" aria-hidden="true">⚖️</div>
+                        <h3>Statics &amp; Dynamics</h3>
                         <p>Study forces, moments, and motion in mechanical systems</p>
-                        <button class="learn-more-btn">Learn More</button>
-                    </div>
-                    <div class="concept-card" data-concept="thermodynamics">
-                        <div class="concept-icon">🌡️</div>
+                        <button class="learn-more-btn" aria-label="Learn more about Statics and Dynamics">Learn More</button>
+                    </article>
+                    <article class="concept-card" data-concept="thermodynamics" data-page="thermodynamics.html">
+                        <div class="concept-icon" aria-hidden="true">🌡️</div>
                         <h3>Thermodynamics</h3>
                         <p>Understand heat, energy, and entropy in engineering systems</p>
-                        <button class="learn-more-btn">Learn More</button>
-                    </div>
-                    <div class="concept-card" data-concept="materials">
-                        <div class="concept-icon">🔩</div>
+                        <button class="learn-more-btn" aria-label="Learn more about Thermodynamics">Learn More</button>
+                    </article>
+                    <article class="concept-card" data-concept="materials" data-page="materials.html">
+                        <div class="concept-icon" aria-hidden="true">🔩</div>
                         <h3>Materials Science</h3>
                         <p>Explore stress, strain, and material properties</p>
-                        <button class="learn-more-btn">Learn More</button>
-                    </div>
-                    <div class="concept-card" data-concept="fluids">
-                        <div class="concept-icon">💧</div>
+                        <button class="learn-more-btn" aria-label="Learn more about Materials Science">Learn More</button>
+                    </article>
+                    <article class="concept-card" data-concept="fluids" data-page="">
+                        <div class="concept-icon" aria-hidden="true">💧</div>
                         <h3>Fluid Mechanics</h3>
                         <p>Learn about pressure, flow, and fluid dynamics</p>
-                        <button class="learn-more-btn">Learn More</button>
-                    </div>
-                    <div class="concept-card" data-concept="design">
-                        <div class="concept-icon">📐</div>
+                        <button class="learn-more-btn" disabled aria-label="Fluid Mechanics — coming soon">Coming Soon</button>
+                    </article>
+                    <article class="concept-card" data-concept="design" data-page="">
+                        <div class="concept-icon" aria-hidden="true">📐</div>
                         <h3>Machine Design</h3>
                         <p>Design principles for mechanical components and systems</p>
-                        <button class="learn-more-btn">Learn More</button>
-                    </div>
-                    <div class="concept-card" data-concept="vibrations">
-                        <div class="concept-icon">📳</div>
+                        <button class="learn-more-btn" disabled aria-label="Machine Design — coming soon">Coming Soon</button>
+                    </article>
+                    <article class="concept-card" data-concept="vibrations" data-page="">
+                        <div class="concept-icon" aria-hidden="true">📳</div>
                         <h3>Vibrations</h3>
                         <p>Analyze oscillatory motion and resonance in systems</p>
-                        <button class="learn-more-btn">Learn More</button>
-                    </div>
+                        <button class="learn-more-btn" disabled aria-label="Vibrations — coming soon">Coming Soon</button>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="calculators" class="calculators">
+        <section id="calculators" class="calculators" aria-labelledby="calculators-title">
             <div class="container">
-                <h2>Interactive Calculators</h2>
+                <h2 id="calculators-title">Interactive Calculators</h2>
                 <p class="section-subtitle">Practical tools for engineering calculations</p>
-                
-                <div class="calculator-tabs">
-                    <button class="tab-btn active" data-tab="stress">Stress & Strain</button>
-                    <button class="tab-btn" data-tab="force">Force Analysis</button>
-                    <button class="tab-btn" data-tab="heat">Heat Transfer</button>
-                    <button class="tab-btn" data-tab="fluid">Fluid Flow</button>
-                    <button class="tab-btn" data-tab="converter">Unit Converter</button>
+
+                <div class="calculator-tabs" role="tablist" aria-label="Calculator selection">
+                    <button class="tab-btn active" data-tab="stress" role="tab" aria-selected="true" aria-controls="stress-calc" id="tab-stress">Stress &amp; Strain</button>
+                    <button class="tab-btn" data-tab="force" role="tab" aria-selected="false" aria-controls="force-calc" id="tab-force" tabindex="-1">Force Analysis</button>
+                    <button class="tab-btn" data-tab="heat" role="tab" aria-selected="false" aria-controls="heat-calc" id="tab-heat" tabindex="-1">Heat Transfer</button>
+                    <button class="tab-btn" data-tab="fluid" role="tab" aria-selected="false" aria-controls="fluid-calc" id="tab-fluid" tabindex="-1">Fluid Flow</button>
+                    <button class="tab-btn" data-tab="converter" role="tab" aria-selected="false" aria-controls="converter-calc" id="tab-converter" tabindex="-1">Unit Converter</button>
                 </div>
 
                 <div class="calculator-content">
                     <!-- Stress & Strain Calculator -->
-                    <div class="calculator-panel active" id="stress-calc">
+                    <div class="calculator-panel active" id="stress-calc" role="tabpanel" aria-labelledby="tab-stress">
                         <div class="calc-header">
-                            <h3>Stress & Strain Calculator</h3>
+                            <h3>Stress &amp; Strain Calculator</h3>
                             <p>Calculate normal stress, strain, and Young's modulus</p>
                         </div>
-                        <div class="calc-body">
+                        <form class="calc-body" data-calc="stress" novalidate>
                             <div class="input-group">
                                 <label for="force-input">Force (N)</label>
-                                <input type="number" id="force-input" placeholder="Enter force">
+                                <input type="number" id="force-input" placeholder="Enter force" step="any" min="0" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="area-input">Cross-sectional Area (m²)</label>
-                                <input type="number" id="area-input" placeholder="Enter area">
+                                <input type="number" id="area-input" placeholder="Enter area" step="any" min="0" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="length-input">Original Length (m)</label>
-                                <input type="number" id="length-input" placeholder="Enter length">
+                                <input type="number" id="length-input" placeholder="Enter length" step="any" min="0" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="deformation-input">Deformation (m)</label>
-                                <input type="number" id="deformation-input" placeholder="Enter deformation">
+                                <input type="number" id="deformation-input" placeholder="Enter deformation" step="any" inputmode="decimal">
                             </div>
-                            <button class="calculate-btn" onclick="calculateStress()">Calculate</button>
+                            <button type="submit" class="calculate-btn">Calculate</button>
+                            <div class="calc-error" role="alert" aria-live="polite"></div>
                             <div class="results">
                                 <div class="result-item">
                                     <span class="result-label">Stress (σ):</span>
-                                    <span class="result-value" id="stress-result">-</span>
+                                    <span class="result-value" id="stress-result">—</span>
                                 </div>
                                 <div class="result-item">
                                     <span class="result-label">Strain (ε):</span>
-                                    <span class="result-value" id="strain-result">-</span>
+                                    <span class="result-value" id="strain-result">—</span>
                                 </div>
                                 <div class="result-item">
                                     <span class="result-label">Young's Modulus (E):</span>
-                                    <span class="result-value" id="modulus-result">-</span>
+                                    <span class="result-value" id="modulus-result">—</span>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                     <!-- Force Analysis Calculator -->
-                    <div class="calculator-panel" id="force-calc">
+                    <div class="calculator-panel" id="force-calc" role="tabpanel" aria-labelledby="tab-force" hidden>
                         <div class="calc-header">
                             <h3>Force Vector Analysis</h3>
                             <p>Resolve forces into components and calculate resultant</p>
                         </div>
-                        <div class="calc-body">
+                        <form class="calc-body" data-calc="force" novalidate>
                             <div class="input-group">
                                 <label for="force-magnitude">Force Magnitude (N)</label>
-                                <input type="number" id="force-magnitude" placeholder="Enter magnitude">
+                                <input type="number" id="force-magnitude" placeholder="Enter magnitude" step="any" min="0" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="force-angle">Angle from Horizontal (°)</label>
-                                <input type="number" id="force-angle" placeholder="Enter angle">
+                                <input type="number" id="force-angle" placeholder="Enter angle" step="any" inputmode="decimal">
                             </div>
-                            <button class="calculate-btn" onclick="calculateForce()">Calculate</button>
-                            <div class="force-visualization" id="force-visual">
+                            <button type="submit" class="calculate-btn">Calculate</button>
+                            <div class="calc-error" role="alert" aria-live="polite"></div>
+                            <div class="force-visualization" id="force-visual" aria-hidden="true">
                                 <svg viewBox="0 0 300 200">
                                     <defs>
                                         <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                                             <polygon points="0 0, 10 3, 0 6" fill="#6366f1" />
                                         </marker>
                                     </defs>
-                                    <line x1="50" y1="150" x2="250" y2="150" stroke="#333" stroke-width="2"/>
+                                    <line x1="50" y1="150" x2="250" y2="150" stroke="currentColor" stroke-width="2" opacity="0.5"/>
                                     <line id="force-arrow" x1="150" y1="150" x2="150" y2="50" stroke="#6366f1" stroke-width="4" marker-end="url(#arrowhead)"/>
                                     <text x="150" y="30" text-anchor="middle" fill="#6366f1" font-weight="bold" id="force-label">F</text>
                                 </svg>
@@ -182,89 +216,94 @@
                             <div class="results">
                                 <div class="result-item">
                                     <span class="result-label">Horizontal Component (Fx):</span>
-                                    <span class="result-value" id="fx-result">-</span>
+                                    <span class="result-value" id="fx-result">—</span>
                                 </div>
                                 <div class="result-item">
                                     <span class="result-label">Vertical Component (Fy):</span>
-                                    <span class="result-value" id="fy-result">-</span>
+                                    <span class="result-value" id="fy-result">—</span>
                                 </div>
                                 <div class="result-item">
                                     <span class="result-label">Resultant Magnitude:</span>
-                                    <span class="result-value" id="resultant-result">-</span>
+                                    <span class="result-value" id="resultant-result">—</span>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                     <!-- Heat Transfer Calculator -->
-                    <div class="calculator-panel" id="heat-calc">
+                    <div class="calculator-panel" id="heat-calc" role="tabpanel" aria-labelledby="tab-heat" hidden>
                         <div class="calc-header">
                             <h3>Heat Transfer Calculator</h3>
                             <p>Calculate heat transfer rate using Fourier's law</p>
                         </div>
-                        <div class="calc-body">
+                        <form class="calc-body" data-calc="heat" novalidate>
                             <div class="input-group">
                                 <label for="thermal-conductivity">Thermal Conductivity (W/m·K)</label>
-                                <input type="number" id="thermal-conductivity" placeholder="Enter k">
+                                <input type="number" id="thermal-conductivity" placeholder="Enter k" step="any" min="0" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="surface-area">Surface Area (m²)</label>
-                                <input type="number" id="surface-area" placeholder="Enter area">
+                                <input type="number" id="surface-area" placeholder="Enter area" step="any" min="0" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="temp-diff">Temperature Difference (K)</label>
-                                <input type="number" id="temp-diff" placeholder="Enter ΔT">
+                                <input type="number" id="temp-diff" placeholder="Enter ΔT" step="any" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="thickness">Thickness (m)</label>
-                                <input type="number" id="thickness" placeholder="Enter thickness">
+                                <input type="number" id="thickness" placeholder="Enter thickness" step="any" min="0" inputmode="decimal">
                             </div>
-                            <button class="calculate-btn" onclick="calculateHeat()">Calculate</button>
+                            <button type="submit" class="calculate-btn">Calculate</button>
+                            <div class="calc-error" role="alert" aria-live="polite"></div>
                             <div class="results">
                                 <div class="result-item">
                                     <span class="result-label">Heat Transfer Rate (Q):</span>
-                                    <span class="result-value" id="heat-result">-</span>
+                                    <span class="result-value" id="heat-result">—</span>
                                 </div>
                                 <div class="result-item">
-                                    <span class="result-label">Formula: Q = k·A·ΔT / L</span>
+                                    <span class="result-label">Formula:</span>
+                                    <span class="result-value">Q = k·A·ΔT / L</span>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                     <!-- Fluid Flow Calculator -->
-                    <div class="calculator-panel" id="fluid-calc">
+                    <div class="calculator-panel" id="fluid-calc" role="tabpanel" aria-labelledby="tab-fluid" hidden>
                         <div class="calc-header">
                             <h3>Fluid Flow Calculator</h3>
                             <p>Calculate flow rate and velocity using continuity equation</p>
                         </div>
-                        <div class="calc-body">
+                        <form class="calc-body" data-calc="fluid" novalidate>
                             <div class="input-group">
                                 <label for="flow-rate">Flow Rate (m³/s)</label>
-                                <input type="number" id="flow-rate" placeholder="Enter Q">
+                                <input type="number" id="flow-rate" placeholder="Enter Q" step="any" min="0" inputmode="decimal">
                             </div>
                             <div class="input-group">
                                 <label for="pipe-diameter">Pipe Diameter (m)</label>
-                                <input type="number" id="pipe-diameter" placeholder="Enter diameter">
+                                <input type="number" id="pipe-diameter" placeholder="Enter diameter" step="any" min="0" inputmode="decimal">
                             </div>
-                            <button class="calculate-btn" onclick="calculateFluid()">Calculate</button>
+                            <button type="submit" class="calculate-btn">Calculate</button>
+                            <div class="calc-error" role="alert" aria-live="polite"></div>
                             <div class="results">
                                 <div class="result-item">
                                     <span class="result-label">Flow Velocity (v):</span>
-                                    <span class="result-value" id="velocity-result">-</span>
+                                    <span class="result-value" id="velocity-result">—</span>
                                 </div>
                                 <div class="result-item">
                                     <span class="result-label">Cross-sectional Area:</span>
-                                    <span class="result-value" id="pipe-area-result">-</span>
+                                    <span class="result-value" id="pipe-area-result">—</span>
                                 </div>
                                 <div class="result-item">
-                                    <span class="result-label">Formula: v = Q / A</span>
+                                    <span class="result-label">Formula:</span>
+                                    <span class="result-value">v = Q / A</span>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
+
                     <!-- Unit Converter Calculator -->
-                    <div class="calculator-panel" id="converter-calc">
+                    <div class="calculator-panel" id="converter-calc" role="tabpanel" aria-labelledby="tab-converter" hidden>
                         <div class="calc-header">
                             <h3>Unit Converter</h3>
                             <p>Convert between common mechanical engineering units</p>
@@ -272,7 +311,7 @@
                         <div class="calc-body">
                             <div class="input-group">
                                 <label for="converter-category">Category</label>
-                                <select id="converter-category" onchange="updateConverterUnits()">
+                                <select id="converter-category">
                                     <option value="length">Length</option>
                                     <option value="mass">Mass</option>
                                     <option value="force">Force</option>
@@ -285,27 +324,27 @@
                             </div>
                             <div class="input-group">
                                 <label for="converter-value">Value</label>
-                                <input type="number" id="converter-value" placeholder="Enter value" oninput="convertUnits()">
+                                <input type="number" id="converter-value" placeholder="Enter value" step="any" inputmode="decimal">
                             </div>
-                            <div style="display:flex; gap:0.75rem; align-items:flex-end;">
-                                <div class="input-group" style="flex:1; margin-bottom:0;">
+                            <div class="converter-row">
+                                <div class="input-group converter-from-group">
                                     <label for="converter-from">From</label>
-                                    <select id="converter-from" onchange="convertUnits()"></select>
+                                    <select id="converter-from"></select>
                                 </div>
-                                <button class="calculate-btn" style="margin-bottom:0; padding:0.6rem 1rem; flex-shrink:0;" onclick="swapConverterUnits()">⇄ Swap</button>
-                                <div class="input-group" style="flex:1; margin-bottom:0;">
+                                <button type="button" class="calculate-btn converter-swap" id="converter-swap" aria-label="Swap from and to units">⇄</button>
+                                <div class="input-group converter-to-group">
                                     <label for="converter-to">To</label>
-                                    <select id="converter-to" onchange="convertUnits()"></select>
+                                    <select id="converter-to"></select>
                                 </div>
                             </div>
                             <div class="results">
                                 <div class="result-item">
                                     <span class="result-label">Result:</span>
-                                    <span class="result-value" id="converter-result">-</span>
+                                    <span class="result-value" id="converter-result">—</span>
                                 </div>
                                 <div class="result-item">
                                     <span class="result-label">Formula:</span>
-                                    <span class="result-value" id="converter-formula">-</span>
+                                    <span class="result-value" id="converter-formula">—</span>
                                 </div>
                             </div>
                         </div>
@@ -314,22 +353,24 @@
             </div>
         </section>
 
-        <section id="simulations" class="simulations">
+        <section id="simulations" class="simulations" aria-labelledby="simulations-title">
             <div class="container">
-                <h2>Interactive Simulations</h2>
+                <h2 id="simulations-title">Interactive Simulations</h2>
                 <p class="section-subtitle">Visualize engineering concepts in action</p>
-                
+
                 <div class="simulation-grid">
                     <div class="simulation-card">
                         <h3>Force Vector Visualization</h3>
                         <div class="sim-canvas" id="vector-sim">
-                            <canvas id="vector-canvas" width="400" height="300"></canvas>
+                            <canvas id="vector-canvas" width="400" height="300" aria-label="Force vector visualization"></canvas>
                             <div class="sim-controls">
-                                <label>Force Magnitude: <span id="vec-mag-display">50</span> N</label>
-                                <input type="range" id="vec-magnitude" min="10" max="100" value="50">
-                                <label>Angle: <span id="vec-angle-display">45</span>°</label>
-                                <input type="range" id="vec-angle" min="0" max="360" value="45">
-                                <button onclick="resetVector()">Reset</button>
+                                <label>Force Magnitude: <span id="vec-mag-display">50</span> N
+                                    <input type="range" id="vec-magnitude" min="10" max="100" value="50" aria-label="Force magnitude">
+                                </label>
+                                <label>Angle: <span id="vec-angle-display">45</span>°
+                                    <input type="range" id="vec-angle" min="0" max="360" value="45" aria-label="Force angle">
+                                </label>
+                                <button type="button" data-sim-action="reset-vector">Reset</button>
                             </div>
                         </div>
                     </div>
@@ -337,13 +378,15 @@
                     <div class="simulation-card">
                         <h3>Simple Harmonic Motion</h3>
                         <div class="sim-canvas" id="shm-sim">
-                            <canvas id="shm-canvas" width="400" height="300"></canvas>
+                            <canvas id="shm-canvas" width="400" height="300" aria-label="Simple harmonic motion animation"></canvas>
                             <div class="sim-controls">
-                                <label>Amplitude: <span id="shm-amp-display">50</span></label>
-                                <input type="range" id="shm-amplitude" min="20" max="100" value="50">
-                                <label>Frequency: <span id="shm-freq-display">1</span> Hz</label>
-                                <input type="range" id="shm-frequency" min="0.5" max="3" step="0.1" value="1">
-                                <button onclick="toggleSHM()" id="shm-toggle">Start</button>
+                                <label>Amplitude: <span id="shm-amp-display">50</span>
+                                    <input type="range" id="shm-amplitude" min="20" max="100" value="50" aria-label="Amplitude">
+                                </label>
+                                <label>Frequency: <span id="shm-freq-display">1</span> Hz
+                                    <input type="range" id="shm-frequency" min="0.5" max="3" step="0.1" value="1" aria-label="Frequency">
+                                </label>
+                                <button type="button" data-sim-action="toggle-shm" id="shm-toggle">Start</button>
                             </div>
                         </div>
                     </div>
@@ -351,13 +394,30 @@
                     <div class="simulation-card">
                         <h3>Beam Deflection</h3>
                         <div class="sim-canvas" id="beam-sim">
-                            <canvas id="beam-canvas" width="400" height="300"></canvas>
+                            <canvas id="beam-canvas" width="400" height="300" aria-label="Beam deflection visualization"></canvas>
                             <div class="sim-controls">
-                                <label>Load: <span id="beam-load-display">100</span> N</label>
-                                <input type="range" id="beam-load" min="50" max="500" value="100">
-                                <label>Position: <span id="beam-pos-display">50</span>%</label>
-                                <input type="range" id="beam-position" min="10" max="90" value="50">
-                                <button onclick="updateBeam()">Update</button>
+                                <label>Load: <span id="beam-load-display">100</span> N
+                                    <input type="range" id="beam-load" min="50" max="500" value="100" aria-label="Beam load">
+                                </label>
+                                <label>Position: <span id="beam-pos-display">50</span>%
+                                    <input type="range" id="beam-position" min="10" max="90" value="50" aria-label="Load position">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="simulation-card">
+                        <h3>Projectile Motion</h3>
+                        <div class="sim-canvas" id="projectile-sim">
+                            <canvas id="projectile-canvas" width="400" height="300" aria-label="Projectile motion trajectory"></canvas>
+                            <div class="sim-controls">
+                                <label>Initial Velocity: <span id="proj-vel-display">40</span> m/s
+                                    <input type="range" id="proj-velocity" min="10" max="80" value="40" aria-label="Initial velocity">
+                                </label>
+                                <label>Launch Angle: <span id="proj-angle-display">45</span>°
+                                    <input type="range" id="proj-angle" min="5" max="85" value="45" aria-label="Launch angle">
+                                </label>
+                                <button type="button" data-sim-action="launch-projectile">Launch</button>
                             </div>
                         </div>
                     </div>
@@ -368,7 +428,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Mechanical Mastery. Interactive Engineering Education Platform.</p>
+            <p>&copy; <span id="copyright-year">2026</span> Mechanical Mastery. Interactive Engineering Education Platform.</p>
         </div>
     </footer>
 

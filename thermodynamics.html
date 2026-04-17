@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermodynamics — Mechanical Mastery</title>
+    <meta name="description" content="Equation sheet for thermodynamics: ideal gas law, first law, heat transfer, efficiency, and energy balances.">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="concept-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('mm-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+        })();
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav aria-label="Primary">
+            <a href="index.html" class="logo" aria-label="Mechanical Mastery home">
+                <span class="logo-icon" aria-hidden="true">⚙️</span>
+                <span>Mechanical Mastery</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#concepts">Concepts</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <span class="theme-icon-light" aria-hidden="true">☀️</span>
+                    <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" style="padding: 2rem 0; min-height: calc(100vh - 200px);">
+        <div class="concept-page-container">
+            <div class="concept-header">
+                <h1>🌡️ Thermodynamics</h1>
+                <p>Heat, energy, work, and the laws governing energy transfer in engineering systems</p>
+            </div>
+
+            <div class="concept-content active">
+                <div class="equation-section">
+                    <h3>Ideal Gas Law</h3>
+                    <div class="equation-item" id="eq-ideal-gas">
+                        <div class="equation-formula"><div class="equation-math">$PV = nRT$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">P</span> — Pressure</strong><div class="var-description">Absolute pressure (Pa, kPa, atm)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">V</span> — Volume</strong><div class="var-description">Volume of gas (m³, L)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">n</span> — Moles</strong><div class="var-description">Amount of substance (mol)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">R</span> — Gas Constant</strong><div class="var-description">8.314 J/(mol·K)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">T</span> — Temperature</strong><div class="var-description">Absolute temperature (K)</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>First Law of Thermodynamics</h3>
+                    <div class="equation-item" id="eq-first-law">
+                        <div class="equation-formula"><div class="equation-math">$\Delta U = Q - W$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">ΔU</span> — Change in Internal Energy</strong><div class="var-description">Net energy change in the system (J, kJ)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">Q</span> — Heat Added</strong><div class="var-description">Heat transferred into system (J, kJ)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">W</span> — Work Done by System</strong><div class="var-description">Work performed by system on surroundings (J, kJ)</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Heat Transfer</h3>
+                    <div class="equation-item" id="eq-conduction">
+                        <div class="equation-formula"><div class="equation-math">$Q = \frac{kA\Delta T}{L}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">Q</span> — Heat Transfer Rate</strong><div class="var-description">Rate of heat conduction (W)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">k</span> — Thermal Conductivity</strong><div class="var-description">Material property (W/(m·K))</div></div>
+                            <div class="variable-def"><strong><span class="var-name">A</span> — Cross-sectional Area</strong><div class="var-description">Area perpendicular to heat flow (m²)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">ΔT</span> — Temperature Difference</strong><div class="var-description">Difference across material (K, °C)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">L</span> — Thickness</strong><div class="var-description">Material thickness (m)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-sensible-heat">
+                        <div class="equation-formula"><div class="equation-math">$Q = mc\Delta T$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">Q</span> — Heat Energy</strong><div class="var-description">Heat absorbed or released (J, kJ)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">m</span> — Mass</strong><div class="var-description">Mass of substance (kg)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">c</span> — Specific Heat Capacity</strong><div class="var-description">Heat per unit mass per degree (J/(kg·K))</div></div>
+                            <div class="variable-def"><strong><span class="var-name">ΔT</span> — Temperature Change</strong><div class="var-description">Change in temperature (K, °C)</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Efficiency &amp; Cycles</h3>
+                    <div class="equation-item" id="eq-carnot">
+                        <div class="equation-formula"><div class="equation-math">$\eta_{Carnot} = 1 - \frac{T_C}{T_H}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">η</span> — Carnot Efficiency</strong><div class="var-description">Maximum theoretical efficiency (dimensionless)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">T_C</span> — Cold Reservoir Temperature</strong><div class="var-description">Absolute temperature (K)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">T_H</span> — Hot Reservoir Temperature</strong><div class="var-description">Absolute temperature (K)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-thermal-efficiency">
+                        <div class="equation-formula"><div class="equation-math">$\eta = \frac{W_{net}}{Q_H}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">η</span> — Thermal Efficiency</strong><div class="var-description">Cycle efficiency (dimensionless)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">W_net</span> — Net Work Output</strong><div class="var-description">Net work produced (J, kJ)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">Q_H</span> — Heat Input</strong><div class="var-description">Heat absorbed from hot reservoir (J, kJ)</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Mechanical Mastery. Interactive Engineering Education Platform.</p>
+        </div>
+    </footer>
+
+    <script src="equation-solver.js"></script>
+    <script>
+        document.getElementById('theme-toggle')?.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('mm-theme', next);
+        });
+        const yearEl = document.getElementById('copyright-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const equations = {
+                'eq-ideal-gas': {
+                    formula: '$PV = nRT$',
+                    variables: {
+                        'P': { name: 'Pressure', unit: 'Pa', units: ['Pa', 'kPa', 'MPa', 'atm'] },
+                        'V': { name: 'Volume', unit: 'm³', units: ['m³', 'L'] },
+                        'n': { name: 'Moles', unit: 'mol', units: ['mol'] },
+                        'T': { name: 'Temperature', unit: 'K', units: ['K', '°C'] }
+                    },
+                    rearrangements: {
+                        'P': '$P = \\frac{nRT}{V}$',
+                        'V': '$V = \\frac{nRT}{P}$',
+                        'n': '$n = \\frac{PV}{RT}$',
+                        'T': '$T = \\frac{PV}{nR}$'
+                    },
+                    solvers: {
+                        'P': (v) => (v.n * 8.314 * v.T) / v.V,
+                        'V': (v) => (v.n * 8.314 * v.T) / v.P,
+                        'n': (v) => (v.P * v.V) / (8.314 * v.T),
+                        'T': (v) => (v.P * v.V) / (v.n * 8.314)
+                    }
+                },
+                'eq-first-law': {
+                    formula: '$\\Delta U = Q - W$',
+                    variables: {
+                        'ΔU': { name: 'Change in Internal Energy', unit: 'J', units: ['J', 'kJ'] },
+                        'Q': { name: 'Heat Added', unit: 'J', units: ['J', 'kJ'] },
+                        'W': { name: 'Work Done', unit: 'J', units: ['J', 'kJ'] }
+                    },
+                    rearrangements: {
+                        'ΔU': '$\\Delta U = Q - W$',
+                        'Q': '$Q = \\Delta U + W$',
+                        'W': '$W = Q - \\Delta U$'
+                    },
+                    solvers: {
+                        'ΔU': (v) => v.Q - v.W,
+                        'Q': (v) => v['ΔU'] + v.W,
+                        'W': (v) => v.Q - v['ΔU']
+                    }
+                },
+                'eq-conduction': {
+                    formula: '$Q = \\frac{kA\\Delta T}{L}$',
+                    variables: {
+                        'Q': { name: 'Heat Transfer Rate', unit: 'W', units: ['W', 'kW'] },
+                        'k': { name: 'Thermal Conductivity', unit: 'W/(m·K)', units: ['W/(m·K)'] },
+                        'A': { name: 'Area', unit: 'm²', units: ['m²'] },
+                        'ΔT': { name: 'Temperature Difference', unit: 'K', units: ['K', '°C'] },
+                        'L': { name: 'Thickness', unit: 'm', units: ['m', 'cm', 'mm'] }
+                    },
+                    rearrangements: {
+                        'Q': '$Q = \\frac{kA\\Delta T}{L}$',
+                        'k': '$k = \\frac{QL}{A\\Delta T}$',
+                        'A': '$A = \\frac{QL}{k\\Delta T}$',
+                        'ΔT': '$\\Delta T = \\frac{QL}{kA}$',
+                        'L': '$L = \\frac{kA\\Delta T}{Q}$'
+                    },
+                    solvers: {
+                        'Q': (v) => (v.k * v.A * v['ΔT']) / v.L,
+                        'k': (v) => (v.Q * v.L) / (v.A * v['ΔT']),
+                        'A': (v) => (v.Q * v.L) / (v.k * v['ΔT']),
+                        'ΔT': (v) => (v.Q * v.L) / (v.k * v.A),
+                        'L': (v) => (v.k * v.A * v['ΔT']) / v.Q
+                    }
+                },
+                'eq-sensible-heat': {
+                    formula: '$Q = mc\\Delta T$',
+                    variables: {
+                        'Q': { name: 'Heat Energy', unit: 'J', units: ['J', 'kJ'] },
+                        'm': { name: 'Mass', unit: 'kg', units: ['kg', 'g'] },
+                        'c': { name: 'Specific Heat', unit: 'J/(kg·K)', units: ['J/(kg·K)'] },
+                        'ΔT': { name: 'Temperature Change', unit: 'K', units: ['K', '°C'] }
+                    },
+                    rearrangements: {
+                        'Q': '$Q = mc\\Delta T$',
+                        'm': '$m = \\frac{Q}{c\\Delta T}$',
+                        'c': '$c = \\frac{Q}{m\\Delta T}$',
+                        'ΔT': '$\\Delta T = \\frac{Q}{mc}$'
+                    },
+                    solvers: {
+                        'Q': (v) => v.m * v.c * v['ΔT'],
+                        'm': (v) => v.Q / (v.c * v['ΔT']),
+                        'c': (v) => v.Q / (v.m * v['ΔT']),
+                        'ΔT': (v) => v.Q / (v.m * v.c)
+                    }
+                },
+                'eq-carnot': {
+                    formula: '$\\eta = 1 - \\frac{T_C}{T_H}$',
+                    variables: {
+                        'η': { name: 'Carnot Efficiency', unit: '', units: [''] },
+                        'T_C': { name: 'Cold Temperature', unit: 'K', units: ['K'] },
+                        'T_H': { name: 'Hot Temperature', unit: 'K', units: ['K'] }
+                    },
+                    rearrangements: {
+                        'η': '$\\eta = 1 - \\frac{T_C}{T_H}$',
+                        'T_C': '$T_C = T_H(1 - \\eta)$',
+                        'T_H': '$T_H = \\frac{T_C}{1 - \\eta}$'
+                    },
+                    solvers: {
+                        'η': (v) => 1 - (v.T_C / v.T_H),
+                        'T_C': (v) => v.T_H * (1 - v['η']),
+                        'T_H': (v) => v.T_C / (1 - v['η'])
+                    }
+                },
+                'eq-thermal-efficiency': {
+                    formula: '$\\eta = \\frac{W_{net}}{Q_H}$',
+                    variables: {
+                        'η': { name: 'Efficiency', unit: '', units: [''] },
+                        'W_net': { name: 'Net Work', unit: 'J', units: ['J', 'kJ'] },
+                        'Q_H': { name: 'Heat Input', unit: 'J', units: ['J', 'kJ'] }
+                    },
+                    rearrangements: {
+                        'η': '$\\eta = \\frac{W_{net}}{Q_H}$',
+                        'W_net': '$W_{net} = \\eta Q_H$',
+                        'Q_H': '$Q_H = \\frac{W_{net}}{\\eta}$'
+                    },
+                    solvers: {
+                        'η': (v) => v.W_net / v.Q_H,
+                        'W_net': (v) => v['η'] * v.Q_H,
+                        'Q_H': (v) => v.W_net / v['η']
+                    }
+                }
+            };
+
+            setTimeout(() => {
+                Object.keys(equations).forEach(id => initEquationSolver(id, equations[id]));
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

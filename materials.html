@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materials Science — Mechanical Mastery</title>
+    <meta name="description" content="Equation sheet for Materials Science: stress, strain, Hooke's law, Poisson's ratio, factor of safety, and more.">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="concept-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('mm-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+        })();
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav aria-label="Primary">
+            <a href="index.html" class="logo" aria-label="Mechanical Mastery home">
+                <span class="logo-icon" aria-hidden="true">⚙️</span>
+                <span>Mechanical Mastery</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#concepts">Concepts</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <span class="theme-icon-light" aria-hidden="true">☀️</span>
+                    <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" style="padding: 2rem 0; min-height: calc(100vh - 200px);">
+        <div class="concept-page-container">
+            <div class="concept-header">
+                <h1>🔩 Materials Science</h1>
+                <p>Stress, strain, elastic behavior, and material properties for engineering design</p>
+            </div>
+
+            <div class="concept-content active">
+                <div class="equation-section">
+                    <h3>Stress &amp; Strain</h3>
+                    <div class="equation-item" id="eq-normal-stress">
+                        <div class="equation-formula"><div class="equation-math">$\sigma = \frac{F}{A}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">σ</span> — Normal Stress</strong><div class="var-description">Force per unit area (Pa, MPa, psi)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">F</span> — Axial Force</strong><div class="var-description">Force along the member axis (N, kN, lbf)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">A</span> — Cross-sectional Area</strong><div class="var-description">Area perpendicular to force (m², mm²)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-normal-strain">
+                        <div class="equation-formula"><div class="equation-math">$\varepsilon = \frac{\Delta L}{L_0}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">ε</span> — Normal Strain</strong><div class="var-description">Dimensionless deformation ratio</div></div>
+                            <div class="variable-def"><strong><span class="var-name">ΔL</span> — Change in Length</strong><div class="var-description">Elongation or compression (m, mm)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">L₀</span> — Original Length</strong><div class="var-description">Initial undeformed length (m, mm)</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Hooke's Law &amp; Elastic Behavior</h3>
+                    <div class="equation-item" id="eq-hookes-law">
+                        <div class="equation-formula"><div class="equation-math">$\sigma = E\varepsilon$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">σ</span> — Stress</strong><div class="var-description">Applied stress (Pa, MPa)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">E</span> — Young's Modulus</strong><div class="var-description">Material stiffness (Pa, GPa)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">ε</span> — Strain</strong><div class="var-description">Resulting strain (dimensionless)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-poisson">
+                        <div class="equation-formula"><div class="equation-math">$\nu = -\frac{\varepsilon_{lateral}}{\varepsilon_{axial}}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">ν</span> — Poisson's Ratio</strong><div class="var-description">Ratio of lateral to axial strain (typically 0.25–0.35)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">ε_lateral</span> — Lateral Strain</strong><div class="var-description">Strain perpendicular to load (dimensionless)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">ε_axial</span> — Axial Strain</strong><div class="var-description">Strain along load direction (dimensionless)</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Shear &amp; Torsion</h3>
+                    <div class="equation-item" id="eq-shear-stress">
+                        <div class="equation-formula"><div class="equation-math">$\tau = \frac{V}{A}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">τ</span> — Shear Stress</strong><div class="var-description">Average shear stress (Pa, MPa)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">V</span> — Shear Force</strong><div class="var-description">Force parallel to area (N, kN)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">A</span> — Shear Area</strong><div class="var-description">Area resisting shear (m², mm²)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-shear-modulus">
+                        <div class="equation-formula"><div class="equation-math">$\tau = G\gamma$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">τ</span> — Shear Stress</strong><div class="var-description">Applied shear stress (Pa, MPa)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">G</span> — Shear Modulus</strong><div class="var-description">Modulus of rigidity (Pa, GPa)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">γ</span> — Shear Strain</strong><div class="var-description">Angular distortion (rad, dimensionless)</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-section">
+                    <h3>Design Criteria</h3>
+                    <div class="equation-item" id="eq-fos">
+                        <div class="equation-formula"><div class="equation-math">$FOS = \frac{\sigma_{yield}}{\sigma_{working}}$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">FOS</span> — Factor of Safety</strong><div class="var-description">Margin of safety (dimensionless, typically &gt; 1)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">σ_yield</span> — Yield Strength</strong><div class="var-description">Material yield stress (Pa, MPa)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">σ_working</span> — Working Stress</strong><div class="var-description">Actual applied stress (Pa, MPa)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="equation-item" id="eq-thermal-strain">
+                        <div class="equation-formula"><div class="equation-math">$\varepsilon_T = \alpha \Delta T$</div></div>
+                        <div class="variable-definitions">
+                            <div class="variable-def"><strong><span class="var-name">ε_T</span> — Thermal Strain</strong><div class="var-description">Strain from temperature change (dimensionless)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">α</span> — Coefficient of Thermal Expansion</strong><div class="var-description">Material property (1/K, 1/°C)</div></div>
+                            <div class="variable-def"><strong><span class="var-name">ΔT</span> — Temperature Change</strong><div class="var-description">Change in temperature (K, °C)</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Mechanical Mastery. Interactive Engineering Education Platform.</p>
+        </div>
+    </footer>
+
+    <script src="equation-solver.js"></script>
+    <script>
+        document.getElementById('theme-toggle')?.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('mm-theme', next);
+        });
+        const yearEl = document.getElementById('copyright-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const equations = {
+                'eq-normal-stress': {
+                    formula: '$\\sigma = \\frac{F}{A}$',
+                    variables: {
+                        'σ': { name: 'Normal Stress', unit: 'Pa', units: ['Pa', 'MPa', 'GPa', 'psi'] },
+                        'F': { name: 'Axial Force', unit: 'N', units: ['N', 'kN', 'lbf'] },
+                        'A': { name: 'Area', unit: 'm²', units: ['m²', 'mm²'] }
+                    },
+                    rearrangements: {
+                        'σ': '$\\sigma = \\frac{F}{A}$',
+                        'F': '$F = \\sigma A$',
+                        'A': '$A = \\frac{F}{\\sigma}$'
+                    },
+                    solvers: {
+                        'σ': (v) => v.F / v.A,
+                        'F': (v) => v['σ'] * v.A,
+                        'A': (v) => v.F / v['σ']
+                    }
+                },
+                'eq-normal-strain': {
+                    formula: '$\\varepsilon = \\frac{\\Delta L}{L_0}$',
+                    variables: {
+                        'ε': { name: 'Strain', unit: '', units: [''] },
+                        'ΔL': { name: 'Change in Length', unit: 'm', units: ['m', 'mm'] },
+                        'L_0': { name: 'Original Length', unit: 'm', units: ['m', 'mm'] }
+                    },
+                    rearrangements: {
+                        'ε': '$\\varepsilon = \\frac{\\Delta L}{L_0}$',
+                        'ΔL': '$\\Delta L = \\varepsilon L_0$',
+                        'L_0': '$L_0 = \\frac{\\Delta L}{\\varepsilon}$'
+                    },
+                    solvers: {
+                        'ε': (v) => v['ΔL'] / v.L_0,
+                        'ΔL': (v) => v['ε'] * v.L_0,
+                        'L_0': (v) => v['ΔL'] / v['ε']
+                    }
+                },
+                'eq-hookes-law': {
+                    formula: '$\\sigma = E\\varepsilon$',
+                    variables: {
+                        'σ': { name: 'Stress', unit: 'Pa', units: ['Pa', 'MPa', 'GPa'] },
+                        'E': { name: 'Young\'s Modulus', unit: 'Pa', units: ['Pa', 'GPa'] },
+                        'ε': { name: 'Strain', unit: '', units: [''] }
+                    },
+                    rearrangements: {
+                        'σ': '$\\sigma = E\\varepsilon$',
+                        'E': '$E = \\frac{\\sigma}{\\varepsilon}$',
+                        'ε': '$\\varepsilon = \\frac{\\sigma}{E}$'
+                    },
+                    solvers: {
+                        'σ': (v) => v.E * v['ε'],
+                        'E': (v) => v['σ'] / v['ε'],
+                        'ε': (v) => v['σ'] / v.E
+                    }
+                },
+                'eq-poisson': {
+                    formula: '$\\nu = -\\frac{\\varepsilon_{lateral}}{\\varepsilon_{axial}}$',
+                    variables: {
+                        'ν': { name: 'Poisson\'s Ratio', unit: '', units: [''] },
+                        'ε_lateral': { name: 'Lateral Strain', unit: '', units: [''] },
+                        'ε_axial': { name: 'Axial Strain', unit: '', units: [''] }
+                    },
+                    rearrangements: {
+                        'ν': '$\\nu = -\\frac{\\varepsilon_{lateral}}{\\varepsilon_{axial}}$',
+                        'ε_lateral': '$\\varepsilon_{lateral} = -\\nu \\varepsilon_{axial}$',
+                        'ε_axial': '$\\varepsilon_{axial} = -\\frac{\\varepsilon_{lateral}}{\\nu}$'
+                    },
+                    solvers: {
+                        'ν': (v) => -(v['ε_lateral'] / v['ε_axial']),
+                        'ε_lateral': (v) => -(v['ν'] * v['ε_axial']),
+                        'ε_axial': (v) => -(v['ε_lateral'] / v['ν'])
+                    }
+                },
+                'eq-shear-stress': {
+                    formula: '$\\tau = \\frac{V}{A}$',
+                    variables: {
+                        'τ': { name: 'Shear Stress', unit: 'Pa', units: ['Pa', 'MPa'] },
+                        'V': { name: 'Shear Force', unit: 'N', units: ['N', 'kN'] },
+                        'A': { name: 'Area', unit: 'm²', units: ['m²', 'mm²'] }
+                    },
+                    rearrangements: {
+                        'τ': '$\\tau = \\frac{V}{A}$',
+                        'V': '$V = \\tau A$',
+                        'A': '$A = \\frac{V}{\\tau}$'
+                    },
+                    solvers: {
+                        'τ': (v) => v.V / v.A,
+                        'V': (v) => v['τ'] * v.A,
+                        'A': (v) => v.V / v['τ']
+                    }
+                },
+                'eq-shear-modulus': {
+                    formula: '$\\tau = G\\gamma$',
+                    variables: {
+                        'τ': { name: 'Shear Stress', unit: 'Pa', units: ['Pa', 'MPa'] },
+                        'G': { name: 'Shear Modulus', unit: 'Pa', units: ['Pa', 'GPa'] },
+                        'γ': { name: 'Shear Strain', unit: '', units: [''] }
+                    },
+                    rearrangements: {
+                        'τ': '$\\tau = G\\gamma$',
+                        'G': '$G = \\frac{\\tau}{\\gamma}$',
+                        'γ': '$\\gamma = \\frac{\\tau}{G}$'
+                    },
+                    solvers: {
+                        'τ': (v) => v.G * v['γ'],
+                        'G': (v) => v['τ'] / v['γ'],
+                        'γ': (v) => v['τ'] / v.G
+                    }
+                },
+                'eq-fos': {
+                    formula: '$FOS = \\frac{\\sigma_{yield}}{\\sigma_{working}}$',
+                    variables: {
+                        'FOS': { name: 'Factor of Safety', unit: '', units: [''] },
+                        'σ_yield': { name: 'Yield Strength', unit: 'Pa', units: ['Pa', 'MPa'] },
+                        'σ_working': { name: 'Working Stress', unit: 'Pa', units: ['Pa', 'MPa'] }
+                    },
+                    rearrangements: {
+                        'FOS': '$FOS = \\frac{\\sigma_{yield}}{\\sigma_{working}}$',
+                        'σ_yield': '$\\sigma_{yield} = FOS \\cdot \\sigma_{working}$',
+                        'σ_working': '$\\sigma_{working} = \\frac{\\sigma_{yield}}{FOS}$'
+                    },
+                    solvers: {
+                        'FOS': (v) => v['σ_yield'] / v['σ_working'],
+                        'σ_yield': (v) => v.FOS * v['σ_working'],
+                        'σ_working': (v) => v['σ_yield'] / v.FOS
+                    }
+                },
+                'eq-thermal-strain': {
+                    formula: '$\\varepsilon_T = \\alpha \\Delta T$',
+                    variables: {
+                        'ε_T': { name: 'Thermal Strain', unit: '', units: [''] },
+                        'α': { name: 'Thermal Expansion Coefficient', unit: '1/K', units: ['1/K'] },
+                        'ΔT': { name: 'Temperature Change', unit: 'K', units: ['K', '°C'] }
+                    },
+                    rearrangements: {
+                        'ε_T': '$\\varepsilon_T = \\alpha \\Delta T$',
+                        'α': '$\\alpha = \\frac{\\varepsilon_T}{\\Delta T}$',
+                        'ΔT': '$\\Delta T = \\frac{\\varepsilon_T}{\\alpha}$'
+                    },
+                    solvers: {
+                        'ε_T': (v) => v['α'] * v['ΔT'],
+                        'α': (v) => v['ε_T'] / v['ΔT'],
+                        'ΔT': (v) => v['ε_T'] / v['α']
+                    }
+                }
+            };
+
+            setTimeout(() => {
+                Object.keys(equations).forEach(id => initEquationSolver(id, equations[id]));
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

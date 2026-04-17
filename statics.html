@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statics & Dynamics - Mechanical Mastery</title>
+    <title>Statics &amp; Dynamics — Mechanical Mastery</title>
+    <meta name="description" content="Equation sheet and practice test for Statics &amp; Dynamics: forces, moments, equilibrium, Newton's laws, friction.">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="concept-page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
+        (function() {
+            const saved = localStorage.getItem('mm-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+        })();
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -19,31 +26,39 @@
             }
         };
     </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
-        <nav>
-            <div class="logo">
-                <span class="logo-icon">⚙️</span>
+        <nav aria-label="Primary">
+            <a href="index.html" class="logo" aria-label="Mechanical Mastery home">
+                <span class="logo-icon" aria-hidden="true">⚙️</span>
                 <span>Mechanical Mastery</span>
-            </div>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#concepts">Concepts</a></li>
             </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <span class="theme-icon-light" aria-hidden="true">☀️</span>
+                    <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <main style="padding: 2rem 0; min-height: calc(100vh - 200px);">
+    <main id="main-content" style="padding: 2rem 0; min-height: calc(100vh - 200px);">
         <div class="concept-page-container">
             <div class="concept-header">
                 <h1>⚖️ Statics & Dynamics</h1>
                 <p>Study forces, moments, and motion in mechanical systems</p>
             </div>
 
-            <div class="concept-tabs">
-                <button class="concept-tab active" onclick="switchTab('equations')">Equation Sheet</button>
-                <button class="concept-tab" onclick="switchTab('test')">Practice Test</button>
+            <div class="concept-tabs" role="tablist">
+                <button class="concept-tab active" data-concept-tab="equations" role="tab" aria-selected="true">Equation Sheet</button>
+                <button class="concept-tab" data-concept-tab="test" role="tab" aria-selected="false">Practice Test</button>
             </div>
 
             <!-- Equations Tab -->
@@ -242,7 +257,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Mechanical Mastery. Interactive Engineering Education Platform.</p>
+            <p>&copy; <span id="copyright-year">2026</span> Mechanical Mastery. Interactive Engineering Education Platform.</p>
         </div>
     </footer>
 
@@ -250,20 +265,34 @@
     <script src="test-utils.js"></script>
     <script src="statics-test.js"></script>
     <script>
+        // Theme toggle
+        document.getElementById('theme-toggle')?.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('mm-theme', next);
+        });
+
+        // Footer year
+        const yearEl = document.getElementById('copyright-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
         // Tab switching
-        function switchTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.concept-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
+        function switchTab(tabName, btnEl) {
+            document.querySelectorAll('.concept-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.concept-tab').forEach(btn => {
                 btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
             });
-
-            // Show selected tab
             document.getElementById(`${tabName}-tab`).classList.add('active');
-            event.target.classList.add('active');
+            if (btnEl) {
+                btnEl.classList.add('active');
+                btnEl.setAttribute('aria-selected', 'true');
+            }
         }
+        document.querySelectorAll('[data-concept-tab]').forEach(btn => {
+            btn.addEventListener('click', () => switchTab(btn.getAttribute('data-concept-tab'), btn));
+        });
 
         // Initialize equation solvers when equations tab is shown
         document.addEventListener('DOMContentLoaded', () => {
